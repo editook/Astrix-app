@@ -22,13 +22,15 @@ public class ViewVideo extends AppCompatActivity{
 
     }
     private void playVideo(){
-        WebView videoView =(WebView) findViewById(R.id.videoView);
-        MediaController mediaController= new MediaController(this);
+        VideoView videoView = (VideoView)findViewById(R.id.videoView);
+        MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(videoView);
-        Uri uri=Uri.parse("https://youtu.be/bSMZknDI6bg");
+        String url = "http://cf.c.ooyala.com/dmYTFrNjE6wlYuJSMSUs25pPwecvRtsQ/DOcJ-FxaFrRg4gtDEwOjIwbTowODE7WK";
+
+        url = "http://ak.c.ooyala.com/M4ajFhdjorF-I5ooXCYpk4cWpES6xjBu/DOcJ-FxaFrRg4gtDEwOjIwbTowODE7WK";
+        Uri uri = Uri.parse(url);
         videoView.setMediaController(mediaController);
         videoView.setVideoURI(uri);
-        videoView.requestFocus();
         videoView.start();
     }
 }
