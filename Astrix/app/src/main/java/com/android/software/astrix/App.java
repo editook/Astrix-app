@@ -9,7 +9,7 @@ import com.android.software.astrix.views.StartApp;
 
 public class App extends Activity {
 
-    private static int TIME =500;
+    private static int TIME = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,10 +19,11 @@ public class App extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(App.this,StartApp.class);
+                Intent intent = new Intent(App.this, StartApp.class);
                 startActivity(intent);
                 finish();
             }
-        },TIME);
+        }, TIME);
     }
+
 }

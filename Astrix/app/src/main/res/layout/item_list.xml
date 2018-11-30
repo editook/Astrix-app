@@ -36,7 +36,8 @@
         android:layout_gravity="left"
         android:text="TextView"
         android:textStyle="bold"
-        tools:text="none" />
+        tools:text="none"
+        android:layout_width="match_parent" />
 
 
 </GridLayout>
