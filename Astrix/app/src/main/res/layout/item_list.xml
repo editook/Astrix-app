@@ -13,7 +13,7 @@
     <TextView
         android:id="@+id/namevideo"
         android:layout_column="2"
-        android:layout_gravity="top"
+        android:layout_gravity="center_vertical"
         android:layout_marginLeft="20dp"
         android:text="TextView"
         android:textColor="@android:color/black"
@@ -27,6 +27,7 @@
         android:layout_height="50dp"
         android:layout_column="1"
         android:layout_gravity="bottom"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="12dp"
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
@@ -34,7 +35,9 @@
         android:id="@+id/namedescription"
         android:layout_column="2"
         android:layout_gravity="left"
+        android:textColor="@android:color/darker_gray"
         android:text="TextView"
+        android:layout_marginLeft="20dp"
         android:textStyle="bold"
         tools:text="none"
         android:layout_width="match_parent" />

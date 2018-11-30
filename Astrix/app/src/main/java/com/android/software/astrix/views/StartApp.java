@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.android.software.astrix.App;
 import com.android.software.astrix.R;
 /**
  * Created by user on 29/11/2018.
@@ -15,9 +16,9 @@ import com.android.software.astrix.R;
 
 public class StartApp extends AppCompatActivity {
     /*example of dates*/
-    private static final String[] videos = new String[]{"video name1", "video name2", "video name3", "video 4", "video 5"};
-    private static final String[] descriptions = new String[]{"descriptions name1", "descriptions name2", "descriptions name3", "descriptions 4", "descriptions 5"};
-    private static final Integer[] images = new Integer[]{R.drawable.name1, R.drawable.name2, R.drawable.name3, R.drawable.name4, R.drawable.name5};
+    private static final String[] videos = new String[]{"Producto #1", "Producto #2", "Producto #4", "Producto #4", "Producto #5","Producto #6","Producto #7","Producto #8"};
+    private static final String[] descriptions = new String[]{"descriptions name1", "descriptions name2", "descriptions name3", "descriptions 4", "descriptions 5","descriptions 6","descriptions 7","descriptions 8"};
+    private static final Integer[] images = new Integer[]{R.drawable.name1, R.drawable.name2, R.drawable.name3, R.drawable.name4, R.drawable.name5, R.drawable.name1, R.drawable.name3, R.drawable.name2};
     private ListView listView;
     private int selected;
 
@@ -47,6 +48,9 @@ public class StartApp extends AppCompatActivity {
                     }
                     listView.getChildAt(position).setBackgroundColor(Color.LTGRAY);
                 }
+                Intent intent = new Intent(StartApp.this, ViewVideo.class);
+
+                startActivity(intent);
             }
         });
 
