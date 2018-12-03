@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/background_light"
+    android:id="@+id/vis"
+    android:columnCount="6"
+    android:rowCount="4"
+    tools:targetApi="ice_cream_sandwich">
+
+    <TextView
+        android:id="@+id/namevideo"
+        android:layout_column="2"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        tools:text="none" />
+
+    <ImageView
+        android:id="@+id/nameimage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_column="1"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="12dp"
+        app:srcCompat="@android:drawable/sym_def_app_icon" />
+
+    <TextView
+        android:id="@+id/namedescription"
+        android:layout_column="2"
+        android:layout_gravity="left"
+        android:textColor="@android:color/darker_gray"
+        android:text="TextView"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        tools:text="none"
+        android:layout_width="match_parent" />
+
+
+</GridLayout>
