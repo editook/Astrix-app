@@ -16,9 +16,17 @@ import com.android.software.astrix.R;
 
 public class StartApp extends AppCompatActivity {
     /*example of dates*/
-    private static final String[] videos = new String[]{"Producto #1", "Producto #2", "Producto #4", "Producto #4", "Producto #5","Producto #6","Producto #7","Producto #8"};
-    private static final String[] descriptions = new String[]{"descriptions name1", "descriptions name2", "descriptions name3", "descriptions 4", "descriptions 5","descriptions 6","descriptions 7","descriptions 8"};
-    private static final Integer[] images = new Integer[]{R.drawable.name1, R.drawable.name2, R.drawable.name3, R.drawable.name4, R.drawable.name5, R.drawable.name1, R.drawable.name3, R.drawable.name2};
+    private static final String[] videos = new String[]{"Manchas Profundas",
+                                                        "Oxipoder Quitamanchas",
+                                                        "Sistema Blanqueador",
+                                                        "Medio ambiente",
+                                                        "Anti bacterial"};
+    private static final String[] descriptions = new String[]{"Quita todas las manchas",
+                                                              "Oxipoder, la nueva tecnologia",
+                                                              "Blanquea tu ropa a mas no poder!",
+                                                              "Amigable con el medio ambiente",
+                                                              "Elimina el 99.9% de las bacterias"};
+    private static final Integer[] images = new Integer[]{R.drawable.name1, R.drawable.name2, R.drawable.name3, R.drawable.name4, R.drawable.name5};
     private ListView listView;
     private int selected;
 
@@ -38,7 +46,7 @@ public class StartApp extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if (selected == position) {
+               /* if (selected == position) {
                     listView.getChildAt(position).setBackgroundColor(Color.WHITE);
                     selected = -1;
                 } else {
@@ -47,7 +55,7 @@ public class StartApp extends AppCompatActivity {
                         listView.getChildAt(selected).setBackgroundColor(Color.WHITE);
                     }
                     listView.getChildAt(position).setBackgroundColor(Color.LTGRAY);
-                }
+                }*/
                 Intent intent = new Intent(StartApp.this, ViewVideo.class);
 
                 startActivity(intent);
