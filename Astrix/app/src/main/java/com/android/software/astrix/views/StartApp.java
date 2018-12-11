@@ -46,16 +46,6 @@ public class StartApp extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-               /* if (selected == position) {
-                    listView.getChildAt(position).setBackgroundColor(Color.WHITE);
-                    selected = -1;
-                } else {
-                    selected = position;
-                    if (selected != -1) {
-                        listView.getChildAt(selected).setBackgroundColor(Color.WHITE);
-                    }
-                    listView.getChildAt(position).setBackgroundColor(Color.LTGRAY);
-                }*/
                 Intent intent = new Intent(StartApp.this, ViewVideo.class);
 
                 startActivity(intent);

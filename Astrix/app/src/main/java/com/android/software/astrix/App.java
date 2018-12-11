@@ -15,54 +15,26 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.android.software.astrix.views.StartApp;
+import com.android.software.astrix.views.ViewProduct;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class App extends AppCompatActivity {
-
-    VideoView videoView;
-    ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList("https://mega.nz/#!XpZF3S7R!7iZOqcTxcvMzTvtMHKJ79C732R_shy8CVWZZTOR_sp4","https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
-
-    int index = 0;
-
+    private static int TIME = 2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.videos);
+        setContentView(R.layout.init_view);
 
-        videoView = (VideoView) findViewById(R.id.videoView);
-        final MediaController mediacontroller = new MediaController(this);
-        mediacontroller.setAnchorView(videoView);
-
-
-        videoView.setMediaController(mediacontroller);
-        videoView.setVideoURI(Uri.parse(arrayList.get(index)));
-        videoView.requestFocus();
-
-        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onCompletion(MediaPlayer mp) {
-                Toast.makeText(getApplicationContext(), "Video over", Toast.LENGTH_SHORT).show();
-                if (index++ == arrayList.size()) {
-                    index = 0;
-                    mp.release();
-                    Toast.makeText(getApplicationContext(), "Video over", Toast.LENGTH_SHORT).show();
-                } else {
-                    videoView.setVideoURI(Uri.parse(arrayList.get(index)));
-                    videoView.start();
-                }
+            public void run() {
+                Intent intent = new Intent(App.this, ViewProduct.class);
 
-
+                startActivity(intent);
+                App.this.finish();
             }
-        });
-
-        videoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
-            @Override
-            public boolean onError(MediaPlayer mp, int what, int extra) {
-                Log.d("API123", "What " + what + " extra " + extra);
-                return false;
-            }
-        });
+        }, TIME);
     }
 }
