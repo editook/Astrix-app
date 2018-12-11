@@ -46,7 +46,7 @@ public class StartApp extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(StartApp.this, ViewVideo.class);
+                Intent intent = new Intent(StartApp.this, com.android.software.astrix.views.App.class);
 
                 startActivity(intent);
             }

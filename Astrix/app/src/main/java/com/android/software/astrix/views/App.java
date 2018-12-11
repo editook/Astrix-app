@@ -1,41 +1,85 @@
 package com.android.software.astrix.views;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.VideoView;
+
 import com.android.software.astrix.R;
 import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
 public class App extends AppCompatActivity {
-    private CircleMenu circleMenu;
+    private ImageView primero,segundo,tercero,cuarto,quinto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vista);
-        menu();
+        primero();
+        segundo();
+        tercero();
+        cuarto();
+        quinto();
 
     }
-    private void menu(){
-        final String[] array = new String []{"A","B","C","D","E"};
-        circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
-        circleMenu.setMainMenu(R.color.transparente,R.drawable.name2,R.drawable.name2)
-                .addSubMenu(Color.parseColor("#258CFF"),R.drawable.a)
-                .addSubMenu(Color.parseColor("#30A400"),R.drawable.b)
-                .addSubMenu(Color.parseColor("#FF4B32"),R.drawable.c)
-                .addSubMenu(Color.parseColor("#8A39FF"),R.drawable.d)
-                .addSubMenu(Color.parseColor("#FF6A00"),R.drawable.e)
-                .setOnMenuSelectedListener(new OnMenuSelectedListener() {
-                    @Override
-                    public void onMenuSelected(int index) {
-                        Log.println(Log.DEBUG," Presionaste joquin: ",array[index]);
 
-                    }
+    private void quinto() {
+        quinto = (ImageView) findViewById(R.id.quinto);
+        quinto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    newWindows("4");
+            }
+        });
+    }
+    private void newWindows(String idVideo){
+        Intent actividad=new Intent(App.this,VideoView.class);
+        actividad.putExtra("AcConSecDia2134",idVideo);
+        startActivity(actividad);
+    }
+    private void cuarto() {
+        cuarto = (ImageView) findViewById(R.id.cuarto);
+        cuarto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newWindows("3");
+            }
+        });
+    }
 
-                });
+    private void tercero() {
+        tercero = (ImageView) findViewById(R.id.tercero);
+        tercero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newWindows("2");
+            }
+        });
+    }
 
+    private void segundo() {
+        segundo = (ImageView) findViewById(R.id.segundo);
+        segundo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newWindows("1");
+            }
+        });
+    }
+
+    private void primero() {
+        primero = (ImageView) findViewById(R.id.primero);
+        primero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newWindows("0");
+            }
+        });
     }
 
 }

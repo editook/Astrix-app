@@ -1,5 +1,6 @@
 package com.android.software.astrix.views;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -22,48 +23,26 @@ import java.util.Arrays;
 
 public class ViewVideo extends AppCompatActivity{
     VideoView videoView;
-    ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList("https://mega.nz/#!XpZF3S7R!7iZOqcTxcvMzTvtMHKJ79C732R_shy8CVWZZTOR_sp4","https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+    ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList("https://mega.nz/#!YiZmwKTa!rTqTsLKFripekreUUO3LU1K0wYqFZXjDYEETuP7NA2Y","https://mega.nz/#!YiZmwKTa!rTqTsLKFripekreUUO3LU1K0wYqFZXjDYEETuP7NA2Y","https://mega.nz/#!YiZmwKTa!rTqTsLKFripekreUUO3LU1K0wYqFZXjDYEETuP7NA2Y","https://mega.nz/#!YiZmwKTa!rTqTsLKFripekreUUO3LU1K0wYqFZXjDYEETuP7NA2Y", "https://mega.nz/#!MyJwiYoS!bnZtnqWPEMBn-HO7nvEacGZU_hkSES-KBxpZ7zS-_Pc"));
 
     int index = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_video);
-        playVideo();
+        Bundle parametros = this.getIntent().getExtras();
+        String date = parametros.getString("AcConSecDia2134");
+        int value = Integer.parseInt(date);
+        playVideo(value);
 
     }
-    private void playVideo(){
-        videoView = (VideoView) findViewById(R.id.videoView);
-        final MediaController mediacontroller = new MediaController(this);
-        mediacontroller.setAnchorView(videoView);
-
-
-        videoView.setMediaController(mediacontroller);
-        videoView.setVideoURI(Uri.parse(arrayList.get(index)));
-        videoView.requestFocus();
-
-        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-
-                if (index++ == arrayList.size()) {
-                    index = 0;
-                    mp.release();
-
-                } else {
-                    videoView.setVideoURI(Uri.parse(arrayList.get(index)));
-                    videoView.start();
-                }
-
-
-            }
-        });
-
-        videoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
-            @Override
-            public boolean onError(MediaPlayer mp, int what, int extra) {
-                return false;
-            }
-        });
+    private void playVideo(int value){
+        getWindow().getDecorView().setSystemUiVisibility(0x10);
+        setContentView(R.layout.view_video);
+        String url = "https://youtu.be/dRwq9rAZGyA";
+        WebView webView = (WebView) findViewById(R.id.webview);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setUserAgentString("Desktop");
+        webView.loadUrl(url);
     }
 }

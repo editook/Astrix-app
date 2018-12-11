@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Ola</string>
+    <string name="app_name">OLA Investigacion y Desarrollo</string>
     <string name="tituloLista">Ola: Investigacion y desarrollo</string>
     <string name="productos">Productos</string>
     <string name="categorias">Categorias</string>
-
+    <string name="demo">play video</string>
 </resources>

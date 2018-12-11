@@ -15,7 +15,9 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.android.software.astrix.views.StartApp;
+import com.android.software.astrix.views.ViewCategory;
 import com.android.software.astrix.views.ViewProduct;
+import com.android.software.astrix.views.ViewVideo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +32,7 @@ public class App extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(App.this, ViewProduct.class);
+                Intent intent = new Intent(App.this, ViewCategory.class);
 
                 startActivity(intent);
                 App.this.finish();
