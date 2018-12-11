@@ -16,9 +16,8 @@
         tools:targetApi="honeycomb">
         <!--<activity android:name=".views.App"  android:theme="@style/AppTheme.NoActionBar"></activity>-->
         <activity android:name=".views.ViewVideo"  android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".views.StartApp" android:label="@string/tituloLista"></activity>
         <activity android:name=".views.ViewProduct" android:label="@string/categorias"></activity>
-        <activity android:name=".views.ViewCategory" android:label="@string/productos"></activity>
+        <activity android:name=".views.StartApp" android:label="@string/productos"></activity>
         <activity
             android:name=".App"
             android:theme="@style/AppTheme.NoActionBar">
