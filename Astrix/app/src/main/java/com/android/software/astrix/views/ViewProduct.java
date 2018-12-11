@@ -29,7 +29,7 @@ public class ViewProduct extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ViewProduct.this, ViewVideo.class);
+                Intent intent = new Intent(ViewProduct.this, App.class);
                 startActivity(intent);
             }
         });

@@ -22,7 +22,7 @@ import java.util.Arrays;
 
 public class ViewVideo extends AppCompatActivity{
     VideoView videoView;
-    ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList("https://mega.nz/#!XpZF3S7R!7iZOqcTxcvMzTvtMHKJ79C732R_shy8CVWZZTOR_sp4","https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+    ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList("https://mega.nz/#!YiZmwKTa!rTqTsLKFripekreUUO3LU1K0wYqFZXjDYEETuP7NA2Y","https://mega.nz/#!YiZmwKTa!rTqTsLKFripekreUUO3LU1K0wYqFZXjDYEETuP7NA2Y", "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
 
     int index = 0;
     @Override
