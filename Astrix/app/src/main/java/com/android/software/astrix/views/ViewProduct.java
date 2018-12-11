@@ -12,7 +12,7 @@ import com.android.software.astrix.R;
 public class ViewProduct extends AppCompatActivity {
     /*example of dates*/
     private static final String[] products = new String[]{"Ola Futuro Maquina"};
-    private static final String[] descriptions = new String[]{"DETERGENTE LIQUIDO OLA FUTURO MAQUINA"};
+    private static final String[] descriptions = new String[]{"Detergente liquido Ola futuro maquina"};
     private static final Integer[] images = new Integer[]{R.drawable.cuidadohogar};
     private ListView listView;
     @Override

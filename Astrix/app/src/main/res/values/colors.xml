@@ -5,4 +5,6 @@
     <color name="colorAzulOscuro">#040846</color>
     <color name="colorAccent">#FF4081</color>
     <color name="transparente">#FF4083</color>
+
+    <color name="graylight">#FF4083</color>
 </resources>
