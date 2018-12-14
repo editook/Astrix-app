@@ -6,14 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.VideoView;
 
 import com.android.software.astrix.R;
 
 public class ViewProduct extends AppCompatActivity {
     /*example of dates*/
     private static final String[] products = new String[]{"Ola Futuro Maquina"};
-    private static final String[] descriptions = new String[]{"Detergente liquido Ola futuro maquina"};
-    private static final Integer[] images = new Integer[]{R.drawable.cuidadohogar};
+    private static final String[] descriptions = new String[]{"Detergente liquido "};
+    private static final Integer[] images = new Integer[]{R.drawable.olafuturo};
     private ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

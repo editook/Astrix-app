@@ -1,15 +1,20 @@
 package com.android.software.astrix.views;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.MediaController;
+import android.widget.RelativeLayout;
 import android.widget.VideoView;
 
 import com.android.software.astrix.R;
@@ -22,10 +27,13 @@ import java.util.Arrays;
  */
 
 public class ViewVideo extends AppCompatActivity{
-    VideoView videoView;
-    ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList("https://mega.nz/#!YiZmwKTa!rTqTsLKFripekreUUO3LU1K0wYqFZXjDYEETuP7NA2Y","https://mega.nz/#!YiZmwKTa!rTqTsLKFripekreUUO3LU1K0wYqFZXjDYEETuP7NA2Y","https://mega.nz/#!YiZmwKTa!rTqTsLKFripekreUUO3LU1K0wYqFZXjDYEETuP7NA2Y","https://mega.nz/#!YiZmwKTa!rTqTsLKFripekreUUO3LU1K0wYqFZXjDYEETuP7NA2Y", "https://mega.nz/#!MyJwiYoS!bnZtnqWPEMBn-HO7nvEacGZU_hkSES-KBxpZ7zS-_Pc"));
-
-    int index = 0;
+    WebView webView;
+    ArrayList<String> arrayList = new ArrayList<String>(
+            Arrays.asList("https://www.youtube.com/embed/dRwq9rAZGyA",
+                    "https://www.youtube.com/embed/oeYKN6dFOcA",
+                    "https://www.youtube.com/embed/5V6h1i-7I4s",
+                    "https://www.youtube.com/embed/6Xs6-j2DIdY",
+                    "https://www.youtube.com/embed/eVzVxS5Pe9A"));
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,16 +41,18 @@ public class ViewVideo extends AppCompatActivity{
         Bundle parametros = this.getIntent().getExtras();
         String date = parametros.getString("AcConSecDia2134");
         int value = Integer.parseInt(date);
-        playVideo(value);
 
-    }
-    private void playVideo(int value){
-        getWindow().getDecorView().setSystemUiVisibility(0x10);
-        setContentView(R.layout.view_video);
-        String url = "https://youtu.be/dRwq9rAZGyA";
-        WebView webView = (WebView) findViewById(R.id.webview);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setUserAgentString("Desktop");
-        webView.loadUrl(url);
+        String frameVideo = "<html><body><iframe width='100%' height='100%' src='"+arrayList.get(value)+"' frameborder='0' allowfullscreen></iframe></body></html>";
+
+        WebView displayYoutubeVideo = (WebView) findViewById(R.id.webview);
+        displayYoutubeVideo.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return false;
+            }
+        });
+        WebSettings webSettings = displayYoutubeVideo.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        displayYoutubeVideo.loadData(frameVideo, "text/html", "utf-8");
     }
 }

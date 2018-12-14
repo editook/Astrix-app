@@ -20,6 +20,7 @@ public class App extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vista);
+
         primero();
         segundo();
         tercero();
@@ -38,7 +39,7 @@ public class App extends AppCompatActivity {
         });
     }
     private void newWindows(String idVideo){
-        Intent actividad=new Intent(App.this,VideoView.class);
+        Intent actividad=new Intent(App.this,ViewVideo.class);
         actividad.putExtra("AcConSecDia2134",idVideo);
         startActivity(actividad);
     }

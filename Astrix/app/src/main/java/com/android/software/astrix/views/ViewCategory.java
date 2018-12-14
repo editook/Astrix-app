@@ -12,8 +12,8 @@ import com.android.software.astrix.R;
 public class ViewCategory extends AppCompatActivity {
     /*example of dates*/
     private static final String[] products = new String[]{" Lavado y cuidado de ropa"};
-    private static final String[] descriptions = new String[]{"Ola lavado inteligente"};
-    private static final Integer[] images = new Integer[]{R.drawable.lavadointeligente};
+    private static final String[] descriptions = new String[]{""};
+    private static final Integer[] images = new Integer[]{R.drawable.olafuturo};
     private ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
