@@ -2,10 +2,10 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vis"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/background_light"
-    android:id="@+id/vis"
     android:columnCount="4"
     android:rowCount="4"
     tools:targetApi="ice_cream_sandwich">
@@ -13,23 +13,25 @@
 
     <ImageView
         android:id="@+id/nameimage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_column="1"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
         android:layout_row="0"
+        android:layout_column="1"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
-        app:srcCompat="@android:drawable/sym_def_app_icon"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:srcCompat="@android:drawable/sym_def_app_icon" />
 
 
     <TextView
         android:id="@+id/namevideo"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:layout_row="0"
         android:layout_column="2"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:text="TextView"
         android:textColor="@android:color/black"
         android:textSize="18dp"
@@ -37,17 +39,18 @@
         tools:text="none" />
 
     <TextView
+
         android:id="@+id/namedescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_row="0"
         android:layout_column="2"
-        android:layout_marginTop="40dp"
-        android:layout_width="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/darker_gray"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
         android:text="TextView"
+        android:textColor="@android:color/darker_gray"
         android:textSize="14dp"
-        android:layout_marginLeft="20dp"
         android:textStyle="bold"
         tools:text="none" />
 

@@ -2,20 +2,14 @@ package com.android.software.astrix.views;
 
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.VideoView;
 
 import com.android.software.astrix.R;
-import com.hitomi.cmlibrary.CircleMenu;
-import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
-public class App extends AppCompatActivity {
-    private ImageView primero,segundo,tercero,cuarto,quinto;
+public class MenuVideo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,21 +24,23 @@ public class App extends AppCompatActivity {
     }
 
     private void quinto() {
-        quinto = (ImageView) findViewById(R.id.quinto);
+        ImageView quinto = (ImageView) findViewById(R.id.quinto);
         quinto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    newWindows("4");
+                newWindows("4");
             }
         });
     }
-    private void newWindows(String idVideo){
-        Intent actividad=new Intent(App.this,ViewVideo.class);
-        actividad.putExtra("AcConSecDia2134",idVideo);
+
+    private void newWindows(String idVideo) {
+        Intent actividad = new Intent(MenuVideo.this, ViewVideoYoutube.class);
+        actividad.putExtra("AcConSecDia2134", idVideo);
         startActivity(actividad);
     }
+
     private void cuarto() {
-        cuarto = (ImageView) findViewById(R.id.cuarto);
+        ImageView cuarto = (ImageView) findViewById(R.id.cuarto);
         cuarto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +50,7 @@ public class App extends AppCompatActivity {
     }
 
     private void tercero() {
-        tercero = (ImageView) findViewById(R.id.tercero);
+        ImageView tercero = (ImageView) findViewById(R.id.tercero);
         tercero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +60,7 @@ public class App extends AppCompatActivity {
     }
 
     private void segundo() {
-        segundo = (ImageView) findViewById(R.id.segundo);
+        ImageView segundo = (ImageView) findViewById(R.id.segundo);
         segundo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +70,7 @@ public class App extends AppCompatActivity {
     }
 
     private void primero() {
-        primero = (ImageView) findViewById(R.id.primero);
+        ImageView primero = (ImageView) findViewById(R.id.primero);
         primero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

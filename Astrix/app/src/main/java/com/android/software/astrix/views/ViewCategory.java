@@ -11,20 +11,22 @@ import com.android.software.astrix.R;
 
 public class ViewCategory extends AppCompatActivity {
     /*example of dates*/
-    private static final String[] products = new String[]{" Lavado y cuidado de ropa"};
+    private static final String[] products = new String[]{"  LAVADO Y CUIDADO DE LA ROPA"};
     private static final String[] descriptions = new String[]{""};
-    private static final Integer[] images = new Integer[]{R.drawable.olafuturo};
+    private static final Integer[] images = new Integer[]{R.drawable.categoria};
     private ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
-        listView= (ListView) findViewById(R.id.listvideos);
+        listView = (ListView) findViewById(R.id.listvideos);
         createListView();
     }
+
     private void createListView() {
-        final ListViewVideo listViewVideo = new ListViewVideo(this, images, descriptions, products);
-        listView.setAdapter(listViewVideo);
+        final ListAdapter listAdapter = new ListAdapter(this, images, descriptions, products);
+        listView.setAdapter(listAdapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

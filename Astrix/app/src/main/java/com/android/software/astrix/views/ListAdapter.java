@@ -17,13 +17,13 @@ import static com.android.software.astrix.R.layout.item_list;
  * Created by user on 29/11/2018.
  */
 
-public class ListViewVideo extends ArrayAdapter<String> {
+public class ListAdapter extends ArrayAdapter<String> {
     private Context context;
     private Activity activity;
     private String[] nameVideos, descriptions;
     private Integer[] images;
 
-    public ListViewVideo(Activity activity, Integer[] images, String[] descriptions, String[] nameVideos) {
+    public ListAdapter(Activity activity, Integer[] images, String[] descriptions, String[] nameVideos) {
         super(activity, item_list, nameVideos);
         this.activity = activity;
         this.nameVideos = nameVideos;

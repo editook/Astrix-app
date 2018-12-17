@@ -1,29 +1,15 @@
 package com.android.software.astrix;
 
-import android.app.Activity;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.MediaController;
-import android.widget.Toast;
-import android.widget.VideoView;
+import android.support.v7.app.AppCompatActivity;
 
-import com.android.software.astrix.views.StartApp;
 import com.android.software.astrix.views.ViewCategory;
-import com.android.software.astrix.views.ViewProduct;
-import com.android.software.astrix.views.ViewVideo;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class App extends AppCompatActivity {
-    private static int TIME = 2000;
+    private static final int TIME = 2000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
