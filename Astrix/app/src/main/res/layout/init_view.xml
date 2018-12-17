@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorPrimary"
+    android:background="@color/white"
     tools:context="com.android.software.astrix.App">
 
     <ImageView
@@ -12,5 +12,5 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
-        android:src="@drawable/old" />
+        android:src="@drawable/capture" />
 </LinearLayout>
