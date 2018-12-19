@@ -31,7 +31,7 @@ public class ViewVideoYoutube extends AppCompatActivity {
         String date = parametros.getString("AcConSecDia2134");
         int value = Integer.parseInt(date);
 
-        String frameVideo = "<html><body><iframe width='100%' height='100%' src='"+arrayList.get(value)+"' frameborder='0' allowfullscreen></iframe></body></html>";
+        String frameVideo = "<html><body><iframe width='100%' height='100%' src='" + arrayList.get(value) + "' allowfullscreen></iframe></body></html>";
 
         WebView displayYoutubeVideo = (WebView) findViewById(R.id.webview);
         displayYoutubeVideo.setWebViewClient(new WebViewClient() {
