@@ -21,7 +21,7 @@
         <activity
             android:name=".views.MenuVideo"
             android:label="@string/demo"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            ></activity>
         <activity
             android:name=".views.ViewVideoYoutube"
             android:screenOrientation="landscape"

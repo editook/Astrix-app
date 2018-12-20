@@ -2,6 +2,7 @@ package com.android.software.astrix.views;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -26,14 +27,16 @@ public class ViewVideoYoutube extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("Nathing", "HOLLLLAAAA");
         setContentView(R.layout.view_video);
         Bundle parametros = this.getIntent().getExtras();
         String date = parametros.getString("AcConSecDia2134");
         int value = Integer.parseInt(date);
 
-        String frameVideo = "<html><body><iframe width='100%' height='100%' src='https://www.youtube.com/embed/oeYKN6dFOcA' allowfullscreen></iframe></body></html>";
+        String frameVideo = "<html><body style='margin:auto'><iframe allowfullscreen='allowfullscreen' width=\"550px\" height=\"300px\" src='https://www.youtube.com/embed/oeYKN6dFOcA?autoplay=1'></iframe></body></html>";
 
         WebView displayYoutubeVideo = (WebView) findViewById(R.id.webview);
+
         displayYoutubeVideo.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -42,6 +45,8 @@ public class ViewVideoYoutube extends AppCompatActivity {
         });
         WebSettings webSettings = displayYoutubeVideo.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+
         displayYoutubeVideo.loadData(frameVideo, "text/html", "utf-8");
     }
 }
