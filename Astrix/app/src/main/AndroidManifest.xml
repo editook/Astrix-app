@@ -20,12 +20,18 @@
             android:label="@string/categorias"></activity>
         <activity
             android:name=".views.MenuVideo"
-            android:label="@string/demo"
-            ></activity>
+            android:label="OLA FUTURO Máquina"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.ViewProduct" />
+        </activity>
         <activity
             android:name=".views.ViewVideoYoutube"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
         <activity
             android:name=".views.ViewProduct"
             android:label="@string/productos">

@@ -9,7 +9,9 @@
     android:screenOrientation="portrait"
     android:fillViewport="true"
     tools:context="com.android.software.astrix.views.MenuVideo">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -92,5 +94,5 @@
             android:src="@drawable/name6" />
 
     </GridLayout>
-
+    </ScrollView>
 </RelativeLayout>
