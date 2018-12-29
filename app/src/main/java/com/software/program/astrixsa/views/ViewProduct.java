@@ -9,25 +9,55 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.software.program.astrixsa.R;
+import com.software.program.astrixsa.model.AppCategory;
+import com.software.program.astrixsa.model.AppCategoryI;
+import com.software.program.astrixsa.model.CategoryI;
+import com.software.program.astrixsa.model.InfoPC;
+import com.software.program.astrixsa.model.ProductI;
+
+import java.util.List;
 
 public class ViewProduct extends AppCompatActivity {
     /*example of dates*/
-    private static final String[] products = new String[]{"OLA FUTURO Máquina "};
-    private static final String[] descriptions = new String[]{"Detergente en Polvo "};
-    private static final Integer[] images = new Integer[]{R.drawable.olafuturo};
+    private String[] products;
+    private String[] descriptions;
+    private Integer[] images;
     private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
-        listView = (ListView) findViewById(R.id.listvideos);
-        createListView();
+        listView = findViewById(R.id.listvideos);
+        //index list Product
+        Bundle parametros = this.getIntent().getExtras();
+        String product =  parametros.getString("category");
+        int index = Integer.parseInt(product);
+        createListView(index);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
+    private void updateList(List<ProductI>productsList){
+        int size = productsList.size();
+        products = new String[size];
+        descriptions = new String[size];
+        images = new Integer[size];
+        int indexProduct = 0;
+        for (ProductI product:productsList){
+            InfoPC info = (InfoPC) product;
+            products[indexProduct] = info.getName();
+            descriptions[indexProduct] = info.getDescripcion();
+            images[indexProduct] = info.getImage();
+            indexProduct++;
+        }
+    }
+    private void createListView(int index) {
+        final int valueIndexProduct = index;
+        AppCategoryI appCategory = new AppCategory();
+        CategoryI category = appCategory.getCategory(index);
+        List<ProductI> productIList = category.getProducts();
+        updateList(productIList);
 
-    private void createListView() {
         final ListAdapter listAdapter = new ListAdapter(this, images, descriptions, products);
         listView.setAdapter(listAdapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -35,6 +65,8 @@ public class ViewProduct extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ViewProduct.this, MenuVideo.class);
+                intent.putExtra("category", valueIndexProduct+"");
+                intent.putExtra("product", position+"");
                 startActivity(intent);
             }
         });
