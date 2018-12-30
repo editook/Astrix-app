@@ -1,11 +1,12 @@
-package com.software.program.astrixsa.model;
+package com.software.program.astrixsa.system.app;
 
 import com.software.program.astrixsa.date.LoadDate;
+import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AppCategory implements AppCategoryI{
+public class AppCategory implements AppCategoryI {
     private List<CategoryI> listCategory;
     public AppCategory(){
         listCategory = new ArrayList<>();

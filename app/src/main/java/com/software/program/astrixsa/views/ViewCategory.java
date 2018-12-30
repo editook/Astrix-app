@@ -8,10 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.software.program.astrixsa.R;
-import com.software.program.astrixsa.model.AppCategory;
-import com.software.program.astrixsa.model.AppCategoryI;
-import com.software.program.astrixsa.model.CategoryI;
-import com.software.program.astrixsa.model.InfoPC;
+import com.software.program.astrixsa.system.app.AppCategory;
+import com.software.program.astrixsa.system.app.AppCategoryI;
+import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
+import com.software.program.astrixsa.system.app.productmanager.Product;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class ViewCategory extends AppCompatActivity {
         images = new Integer[size];
         int indexCategory = 0;
         for (CategoryI category:categories){
-            InfoPC info = (InfoPC) category;
+            Product info = (Product) category;
             products[indexCategory] = info.getName();
             descriptions[indexCategory] = info.getDescripcion();
             images[indexCategory] = info.getImage();

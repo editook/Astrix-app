@@ -1,17 +1,25 @@
-package com.software.program.astrixsa.model;
+package com.software.program.astrixsa.system.app.subcategorymanager;
 
 import android.util.Log;
 
-public class ElementProduct {
+import com.software.program.astrixsa.system.app.productmanager.stateVideo;
+
+public class ElementSC {
     private String url;
     private Integer image;
     private Enum state;
-    public ElementProduct(String url,Integer image){
+    private String fileName;
+    public ElementSC(String url, Integer image){
         this.url = url;
         this.image = image;
         state = stateVideo.EN_LINEA;
     }
-
+    public void setFileName(String fileName){
+        this.fileName = fileName;
+    }
+    public String getFileName(){
+        return fileName;
+    }
     public Integer getImage(){
         return image;
     }

@@ -9,11 +9,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.software.program.astrixsa.R;
-import com.software.program.astrixsa.model.AppCategory;
-import com.software.program.astrixsa.model.AppCategoryI;
-import com.software.program.astrixsa.model.CategoryI;
-import com.software.program.astrixsa.model.InfoPC;
-import com.software.program.astrixsa.model.ProductI;
+import com.software.program.astrixsa.system.app.AppCategory;
+import com.software.program.astrixsa.system.app.AppCategoryI;
+import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
+import com.software.program.astrixsa.system.app.productmanager.Product;
+import com.software.program.astrixsa.system.app.subcategorymanager.SubCategoryI;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class ViewProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
         listView = findViewById(R.id.listvideos);
-        //index list Product
+        //index list SubCategory
         Bundle parametros = this.getIntent().getExtras();
         String product =  parametros.getString("category");
         int index = Integer.parseInt(product);
@@ -37,14 +37,14 @@ public class ViewProduct extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
-    private void updateList(List<ProductI>productsList){
+    private void updateList(List<SubCategoryI>productsList){
         int size = productsList.size();
         products = new String[size];
         descriptions = new String[size];
         images = new Integer[size];
         int indexProduct = 0;
-        for (ProductI product:productsList){
-            InfoPC info = (InfoPC) product;
+        for (SubCategoryI product:productsList){
+            Product info = (Product) product;
             products[indexProduct] = info.getName();
             descriptions[indexProduct] = info.getDescripcion();
             images[indexProduct] = info.getImage();
@@ -55,8 +55,8 @@ public class ViewProduct extends AppCompatActivity {
         final int valueIndexProduct = index;
         AppCategoryI appCategory = new AppCategory();
         CategoryI category = appCategory.getCategory(index);
-        List<ProductI> productIList = category.getProducts();
-        updateList(productIList);
+        List<SubCategoryI> subCategoryIList = category.getProducts();
+        updateList(subCategoryIList);
 
         final ListAdapter listAdapter = new ListAdapter(this, images, descriptions, products);
         listView.setAdapter(listAdapter);

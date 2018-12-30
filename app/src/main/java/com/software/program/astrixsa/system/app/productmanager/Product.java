@@ -1,9 +1,9 @@
-package com.software.program.astrixsa.model;
+package com.software.program.astrixsa.system.app.productmanager;
 
-public abstract class InfoPC implements Information{
+public abstract class Product implements ProductI {
     private String name,description;
     private Integer image;
-    public InfoPC(String name, String description, Integer image){
+    public Product(String name, String description, Integer image){
         this.name = name;
         this.description = description;
         this.image = image;

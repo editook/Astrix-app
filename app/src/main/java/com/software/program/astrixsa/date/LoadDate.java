@@ -1,11 +1,11 @@
 package com.software.program.astrixsa.date;
 
 import com.software.program.astrixsa.R;
-import com.software.program.astrixsa.model.Category;
-import com.software.program.astrixsa.model.CategoryI;
-import com.software.program.astrixsa.model.ElementProduct;
-import com.software.program.astrixsa.model.Product;
-import com.software.program.astrixsa.model.ProductI;
+import com.software.program.astrixsa.system.app.categorymanager.Category;
+import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
+import com.software.program.astrixsa.system.app.subcategorymanager.ElementSC;
+import com.software.program.astrixsa.system.app.subcategorymanager.SubCategory;
+import com.software.program.astrixsa.system.app.subcategorymanager.SubCategoryI;
 
 
 public final class LoadDate {
@@ -28,18 +28,18 @@ public final class LoadDate {
         Integer images3 = R.id.tercero;
         Integer images4 = R.id.cuarto;
         Integer images5 = R.id.quinto;
-        ElementProduct elementProduct1= new ElementProduct(url1,images1);
-        ElementProduct elementProduct2= new ElementProduct(url2,images2);
-        ElementProduct elementProduct3= new ElementProduct(url3,images3);
-        ElementProduct elementProduct4= new ElementProduct(url4,images4);
-        ElementProduct elementProduct5= new ElementProduct(url5,images5);
+        ElementSC elementSC1 = new ElementSC(url1,images1);
+        ElementSC elementSC2 = new ElementSC(url2,images2);
+        ElementSC elementSC3 = new ElementSC(url3,images3);
+        ElementSC elementSC4 = new ElementSC(url4,images4);
+        ElementSC elementSC5 = new ElementSC(url5,images5);
 
-        ProductI product1 = new Product(OlaFuturoMaquina,detergentePolvo, producto1);
-        product1.addElement(elementProduct1);
-        product1.addElement(elementProduct2);
-        product1.addElement(elementProduct3);
-        product1.addElement(elementProduct4);
-        product1.addElement(elementProduct5);
+        SubCategoryI product1 = new SubCategory(OlaFuturoMaquina,detergentePolvo, producto1);
+        product1.addElement(elementSC1);
+        product1.addElement(elementSC2);
+        product1.addElement(elementSC3);
+        product1.addElement(elementSC4);
+        product1.addElement(elementSC5);
 
         CategoryI category = new Category(lavadoYCuidadoRopa,categoria1);
         category.addProduct(product1);

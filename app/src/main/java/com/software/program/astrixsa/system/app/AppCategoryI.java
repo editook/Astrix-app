@@ -1,4 +1,6 @@
-package com.software.program.astrixsa.model;
+package com.software.program.astrixsa.system.app;
+
+import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
 
 import java.util.List;
 
