@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.Properties;
@@ -28,7 +29,6 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
     private Context context;
     private Session session;
     //Information to send email
-
     private String nombreRemitente;
     private String mailRemitente;
     private String telefonoRemitente;

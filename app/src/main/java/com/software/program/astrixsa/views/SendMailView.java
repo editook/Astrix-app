@@ -41,7 +41,10 @@ public class SendMailView extends AppCompatActivity implements View.OnClickListe
         String telefonoRemitente = telefono.getText().toString().trim();
         //String message = "Comoestas";
         String mensajeRemitente = mensaje.getText().toString().trim();
-
+        nombre.setText("");
+        email.setText("");
+        telefono.setText("");
+        mensaje.setText("");
         //Creating SendMailView object
         //Executing sendmail to send email
         SendMail sm = new SendMail(this,this, nombreRemitente, emailRemitente, telefonoRemitente, mensajeRemitente);

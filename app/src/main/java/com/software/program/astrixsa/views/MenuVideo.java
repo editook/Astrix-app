@@ -3,6 +3,7 @@ package com.software.program.astrixsa.views;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -107,7 +108,9 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
     private boolean getFileSearchName(int id) {
         ElementSC element = subCategoryI.getElement(id);
         String URLS = "/astrix/"+element.getFileName()+".mp4";
+
         File dir = new File(Environment.getExternalStorageDirectory()+URLS);
+        Log.d("salida",""+dir.getAbsolutePath());
         return dir.getAbsoluteFile().isFile();
     }
 
