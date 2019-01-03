@@ -2,9 +2,11 @@ package com.software.program.astrixsa.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,11 +20,14 @@ import com.software.program.astrixsa.system.app.subcategorymanager.SubCategoryI;
 
 import java.util.List;
 
-public class MenuVideo extends AppCompatActivity {
+public class MenuVideo extends AppCompatActivity implements View.OnClickListener {
     private SubCategoryI subCategoryI;
     private int indexProd,indexCat;
+    private Button botonSugerencias;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vista);
         //index list SubCategory
@@ -32,11 +37,10 @@ public class MenuVideo extends AppCompatActivity {
         indexProd = Integer.parseInt(product);
         indexCat = Integer.parseInt(category);
         createViews(indexProd,indexCat);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
+        botonSugerencias = (Button)findViewById(R.id.botonSugerencias);
+        botonSugerencias.setOnClickListener(this);
     }
+
     private void updateList(List<ElementSC> elementSCS){
         int indexProduct = 0;
         for (ElementSC element: elementSCS){
@@ -105,6 +109,12 @@ public class MenuVideo extends AppCompatActivity {
             actividad.putExtra("urlVideo", elementSC.getFileName());
         }
         startActivity(actividad);
+
+    }
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(MenuVideo.this, SendMailView.class);
+        startActivity(intent);
     }
 
 }

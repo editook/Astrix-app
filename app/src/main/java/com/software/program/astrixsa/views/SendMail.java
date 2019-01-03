@@ -2,7 +2,9 @@ package com.software.program.astrixsa.views;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import java.util.Properties;
@@ -25,7 +27,6 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
     //Declaring Variables
     private Context context;
     private Session session;
-
     //Information to send email
 
     private String nombreRemitente;
@@ -33,12 +34,13 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
     private String telefonoRemitente;
     private String mensajeRemitente;
     private String subject;
+    private boolean successSend = false;
 
     //Progressdialog to show while sending email
     private ProgressDialog progressDialog;
 
     //Class Constructor
-    public SendMail(Context context, String nombreRemitente, String emailRemitente, String telefonoRemitente, String mensajeRemitente){
+    public SendMail(AppCompatActivity activity, Context context, String nombreRemitente, String emailRemitente, String telefonoRemitente, String mensajeRemitente){
         //Initializing variables
         this.context = context;
         this.nombreRemitente = nombreRemitente;
@@ -52,7 +54,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
     protected void onPreExecute() {
         super.onPreExecute();
         //Showing progress dialog while sending email
-        progressDialog = ProgressDialog.show(context,"Sending message","Please wait...",false,false);
+        progressDialog = ProgressDialog.show(context,"Enviando sugerencia","Por favor, espere...",false,false);
     }
 
     @Override
@@ -61,7 +63,12 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
         //Dismissing the progress dialog
         progressDialog.dismiss();
         //Showing a success message
-        Toast.makeText(context,"Message Sent",Toast.LENGTH_LONG).show();
+        if(successSend){
+            Toast.makeText(context,"Sugerencia enviada",Toast.LENGTH_LONG).show();
+            successSend = false;
+            return;
+        }
+        Toast.makeText(context,"Error en el envio",Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -93,15 +100,18 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
             //Setting sender address
             mm.setFrom(new InternetAddress(Config.EMAIL));
             //Adding receiver
-            mm.addRecipient(Message.RecipientType.TO, new InternetAddress("davorthebest@gmail.com"));
+            mm.addRecipient(Message.RecipientType.TO, new InternetAddress("ola.cid.astrix@gmail.com"));
             //Adding subject
             mm.setSubject("Nuevo comentario: OLA Investigacion y Desarrollo");
             //Adding message
             mm.setText(generarCuerpoEmail());
             //Sending email
             Transport.send(mm);
+            successSend = true;
 
         } catch (MessagingException e) {
+            successSend = false;
+            //Toast.makeText(context,"Error",Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
         return null;

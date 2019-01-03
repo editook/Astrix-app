@@ -21,8 +21,17 @@
         tools:targetApi="honeycomb"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".App"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".views.ViewCategory"
-            android:label="@string/categorias"/>
+            android:label="@string/categorias">
+        </activity>
         <activity
             android:name=".views.Download"
             android:label="descarga">
@@ -30,10 +39,7 @@
         <activity
             android:name=".views.MenuVideo"
             android:label="OLA FUTURO Máquina"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.ViewProduct" />
+            android:parentActivityName=".views.ViewCategory">
         </activity>
         <activity
             android:name=".views.ViewVideoYoutube"
@@ -49,19 +55,21 @@
         </activity>
         <activity
             android:name=".views.ViewProduct"
-            android:label="@string/productos">
+            android:label="@string/productos"
+            android:parentActivityName=".views.ViewCategory">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.ViewCategory" />
         </activity>
         <activity
-            android:name=".App"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".views.SendMailView"
+            android:label="@string/sugerencias"
+            android:parentActivityName=".views.ViewCategory">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.ViewCategory" />
+
         </activity>
     </application>
 

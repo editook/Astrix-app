@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.software.program.astrixsa.R;
 
@@ -27,6 +28,7 @@ public class SendMailView extends AppCompatActivity implements View.OnClickListe
         email = (EditText) findViewById(R.id.email);
         mensaje = (EditText) findViewById(R.id.mensaje);
         botonEnviar.setOnClickListener(this);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
@@ -41,10 +43,18 @@ public class SendMailView extends AppCompatActivity implements View.OnClickListe
         String mensajeRemitente = mensaje.getText().toString().trim();
 
         //Creating SendMailView object
-        SendMail sm = new SendMail(this, nombreRemitente, emailRemitente, telefonoRemitente, mensajeRemitente);
-
         //Executing sendmail to send email
+        SendMail sm = new SendMail(this,this, nombreRemitente, emailRemitente, telefonoRemitente, mensajeRemitente);
+        if(nombreRemitente == null || nombreRemitente.equals("") ){
+            Toast.makeText(this,"Por favor, introduzca un nombre",Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(mensajeRemitente== null || mensajeRemitente.trim().equals("") ){
+            Toast.makeText(this,"Por favor, introduzca un mensaje",Toast.LENGTH_LONG).show();
+            return;
+        }
         sm.execute();
+
     }
 
     @Override

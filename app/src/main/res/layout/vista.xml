@@ -92,7 +92,7 @@
             android:padding="5dp"
             android:src="@drawable/name6" />
         <Button
-            android:id="@+id/botonEnviar"
+            android:id="@+id/botonSugerencias"
             android:layout_columnSpan="3"
             android:layout_width="match_parent"
             android:layout_height="55dp"
