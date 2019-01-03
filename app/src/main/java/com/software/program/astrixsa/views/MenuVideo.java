@@ -1,10 +1,13 @@
 package com.software.program.astrixsa.views;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,14 +16,24 @@ import com.software.program.astrixsa.R;
 import com.software.program.astrixsa.system.app.AppCategory;
 import com.software.program.astrixsa.system.app.AppCategoryI;
 import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
+import com.software.program.astrixsa.system.app.productmanager.ProductI;
 import com.software.program.astrixsa.system.app.subcategorymanager.ElementSC;
 import com.software.program.astrixsa.system.app.subcategorymanager.SubCategoryI;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 public class MenuVideo extends AppCompatActivity {
     private SubCategoryI subCategoryI;
     private int indexProd,indexCat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +81,7 @@ public class MenuVideo extends AppCompatActivity {
         Button button = view.findViewById(R.id.playvideo);
         String name = button.getText().toString();
         final ElementSC elementSC = subCategoryI.getElement(Integer.parseInt(idVideo));
+        elementSC.setState(getFileSearchName(Integer.parseInt(idVideo)));
         button.setText(name+ elementSC.state());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +100,13 @@ public class MenuVideo extends AppCompatActivity {
         alert.setView(view);
         AlertDialog alertDialog = alert.create();
         alertDialog.show();
+    }
+
+    private boolean getFileSearchName(int id) {
+        ElementSC element = subCategoryI.getElement(id);
+        String URLS = "/astrix/"+element.getFileName()+".mp4";
+        File dir = new File(Environment.getExternalStorageDirectory()+URLS);
+        return dir.getAbsoluteFile().isFile();
     }
 
     private void downloadVideo(ElementSC elementSC) {

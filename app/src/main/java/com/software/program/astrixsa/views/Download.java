@@ -43,7 +43,6 @@ public class Download extends Activity {
         ytLink = ytLink.replaceAll("embed/", "");
         ytLink = ytLink.substring(0,ytLink.length()-18);
         ytLink = ytLink.replaceAll("youtube.com/", "youtube.com/watch?v=");
-        Log.d("salida",ytLink);
         getYoutubeDownloadUrl(ytLink);
 
     }
