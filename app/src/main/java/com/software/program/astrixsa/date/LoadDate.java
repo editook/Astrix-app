@@ -29,11 +29,15 @@ public final class LoadDate {
         Integer images4 = R.id.cuarto;
         Integer images5 = R.id.quinto;
         ElementSC elementSC1 = new ElementSC(url1,images1);
+        elementSC1.setFileName("Detergente OLA FUTURO Polvo - Remoción d");
         ElementSC elementSC2 = new ElementSC(url2,images2);
+        elementSC2.setFileName("Detergente OLA FUTURO Polvo - Quitamanch");
         ElementSC elementSC3 = new ElementSC(url3,images3);
+        elementSC3.setFileName("Detergente OLA FUTURO Polvo - Sistema Bl");
         ElementSC elementSC4 = new ElementSC(url4,images4);
+        elementSC4.setFileName("Detergente OLA FUTURO Polvo - Baja Espum");
         ElementSC elementSC5 = new ElementSC(url5,images5);
-
+        elementSC5.setFileName("Detergente OLA FUTURO - Acción Antibacte");
         SubCategoryI product1 = new SubCategory(OlaFuturoMaquina,detergentePolvo, producto1);
         product1.addElement(elementSC1);
         product1.addElement(elementSC2);

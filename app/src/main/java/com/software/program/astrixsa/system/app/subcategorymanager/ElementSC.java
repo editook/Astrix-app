@@ -33,13 +33,12 @@ public class ElementSC {
     public String state(){
         return state == stateVideo.EN_LINEA? " ( En Linea ) ":" ( Descargado ) ";
     }
-
+    public void setState(boolean request){//descargado == true
+        state = request?stateVideo.DESCARGADO:stateVideo.EN_LINEA;
+    }
     public void setUrl(String url){
         String string = url.substring(0,4);
         state = string.equals("https")?stateVideo.EN_LINEA:stateVideo.DESCARGADO;
-        if(string.equals("https")){
-            Log.i("salida","comparo bien");
-        }
         this.url = url;
     }
 }
