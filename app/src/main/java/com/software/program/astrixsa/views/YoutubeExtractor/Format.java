@@ -161,7 +161,7 @@ public class Format {
 
     @Override
     public String toString() {
-        return "Format{" +
+        return "ListFormatSave{" +
                 "itag=" + itag +
                 ", ext='" + ext + '\'' +
                 ", height=" + height +

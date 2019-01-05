@@ -18,14 +18,14 @@ public class YtFile {
     }
 
     /**
-     * Format data for the specific file.
+     * ListFormatSave data for the specific file.
      */
     public Format getFormat() {
         return format;
     }
 
     /**
-     * Format data for the specific file.
+     * ListFormatSave data for the specific file.
      */
     @Deprecated
     public Format getMeta() {

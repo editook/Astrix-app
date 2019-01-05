@@ -4,15 +4,25 @@ import android.util.Log;
 
 import com.software.program.astrixsa.system.app.productmanager.stateVideo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ElementSC {
     private String url;
     private Integer image;
     private Enum state;
     private String fileName;
+    private ListFormatSave listFormatSave;
     public ElementSC(String url, Integer image){
         this.url = url;
         this.image = image;
         state = stateVideo.EN_LINEA;
+    }
+    public ListFormatSave getFormatDownload(){
+        return listFormatSave;
+    }
+    public void setListFormatSave(ListFormatSave listFormatSave){
+        this.listFormatSave = listFormatSave;
     }
     public void setFileName(String fileName){
         this.fileName = fileName;

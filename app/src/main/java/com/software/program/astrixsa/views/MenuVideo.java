@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.software.program.astrixsa.R;
 import com.software.program.astrixsa.system.app.AppCategory;
@@ -96,7 +97,7 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                downloadVideo(elementSC);
+                downloadVideo(elementSC,idVideo);
             }
 
         });
@@ -107,19 +108,21 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
 
     private boolean getFileSearchName(int id) {
         ElementSC element = subCategoryI.getElement(id);
-        String URLS = "/astrix/"+element.getFileName()+".mp4";
-
-        File dir = new File(Environment.getExternalStorageDirectory()+URLS);
-        Log.d("salida",""+dir.getAbsolutePath());
-        return dir.getAbsoluteFile().isFile();
+        String URLS1 = "/download/"+element.getFileName()+".mp4";
+        String URLS2 = "/download/"+element.getFileName()+".3gp";
+        File dir1 = new File(Environment.getExternalStorageDirectory()+URLS1);
+        File dir2 = new File(Environment.getExternalStorageDirectory()+URLS2);
+        return dir1.getAbsoluteFile().isFile()|dir2.getAbsoluteFile().isFile();
     }
 
-    private void downloadVideo(ElementSC elementSC) {
+    private void downloadVideo(ElementSC elementSC, String idVideo) {
+
         Intent actividad = new Intent(MenuVideo.this, Download.class);
-        actividad.putExtra("urlVideo", elementSC.getUrl());
+        actividad.putExtra("video", elementSC.getFileName());
         actividad.putExtra("category", indexCat+"");
         actividad.putExtra("product", indexProd+"");
         startActivity(actividad);
+
     }
     private void playVideo(ElementSC elementSC){
         Intent actividad = new Intent(MenuVideo.this, ViewVideoDownloaded.class);

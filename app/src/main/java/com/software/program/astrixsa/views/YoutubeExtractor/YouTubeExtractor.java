@@ -95,14 +95,14 @@ public abstract class YouTubeExtractor extends AsyncTask<String, Void, SparseArr
         // http://en.wikipedia.org/wiki/YouTube#Quality_and_formats
         /*
         // Video and Audio
-        FORMAT_MAP.put(17, new Format(17, "3gp", 144, Format.VCodec.MPEG4, Format.ACodec.AAC, 24, false));
-        FORMAT_MAP.put(36, new Format(36, "3gp", 240, Format.VCodec.MPEG4, Format.ACodec.AAC, 32, false));
-        FORMAT_MAP.put(5, new Format(5, "flv", 240, Format.VCodec.H263, Format.ACodec.MP3, 64, false));
-        FORMAT_MAP.put(43, new Format(43, "webm", 360, Format.VCodec.VP8, Format.ACodec.VORBIS, 128, false));
-        FORMAT_MAP.put(18, new Format(18, "mp4", 360, Format.VCodec.H264, Format.ACodec.AAC, 96, false));
-        FORMAT_MAP.put(22, new Format(22, "mp4", 720, Format.VCodec.H264, Format.ACodec.AAC, 192, false));
+        FORMAT_MAP.put(17, new ListFormatSave(17, "3gp", 144, ListFormatSave.VCodec.MPEG4, ListFormatSave.ACodec.AAC, 24, false));
+        FORMAT_MAP.put(36, new ListFormatSave(36, "3gp", 240, ListFormatSave.VCodec.MPEG4, ListFormatSave.ACodec.AAC, 32, false));
+        FORMAT_MAP.put(5, new ListFormatSave(5, "flv", 240, ListFormatSave.VCodec.H263, ListFormatSave.ACodec.MP3, 64, false));
+        FORMAT_MAP.put(43, new ListFormatSave(43, "webm", 360, ListFormatSave.VCodec.VP8, ListFormatSave.ACodec.VORBIS, 128, false));
+        FORMAT_MAP.put(18, new ListFormatSave(18, "mp4", 360, ListFormatSave.VCodec.H264, ListFormatSave.ACodec.AAC, 96, false));
+        FORMAT_MAP.put(22, new ListFormatSave(22, "mp4", 720, ListFormatSave.VCodec.H264, ListFormatSave.ACodec.AAC, 192, false));
         //code update edito.ok@gmail.com Video and Audio others
-        FORMAT_MAP.put(135, new Format(135, "mp4", 480, Format.VCodec.H264, Format.ACodec.AAC, 170, false));
+        FORMAT_MAP.put(135, new ListFormatSave(135, "mp4", 480, ListFormatSave.VCodec.H264, ListFormatSave.ACodec.AAC, 170, false));
            */
         FORMAT_MAP.put(17, new Format(17, "3gp", 144, Format.VCodec.MPEG4, Format.ACodec.AAC, 24, false));
         FORMAT_MAP.put(36, new Format(36, "3gp", 240, Format.VCodec.MPEG4, Format.ACodec.AAC, 32, false));

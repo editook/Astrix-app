@@ -1,123 +1,118 @@
 package com.software.program.astrixsa.views;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.software.program.astrixsa.R;
+import com.software.program.astrixsa.system.app.AppCategory;
 import com.software.program.astrixsa.system.app.AppCategoryI;
-import com.software.program.astrixsa.views.YoutubeExtractor.VideoMeta;
-import com.software.program.astrixsa.views.YoutubeExtractor.YouTubeExtractor;
-import com.software.program.astrixsa.views.YoutubeExtractor.YtFile;
+import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
+import com.software.program.astrixsa.system.app.subcategorymanager.ElementSC;
+import com.software.program.astrixsa.system.app.subcategorymanager.FileDownload;
+import com.software.program.astrixsa.system.app.subcategorymanager.ListFormatSave;
+import com.software.program.astrixsa.system.app.subcategorymanager.SubCategoryI;
+
+import java.io.File;
+import java.util.List;
 
 public class Download extends Activity {
     private LinearLayout mainLayout;
-    private ProgressBar mainProgressBar;
     private int indexCat,indexProd;
+    private List<FileDownload>listUrlsDownload;
+    private ElementSC elementSC;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vacio);
         mainLayout = findViewById(R.id.main_layout);
-        mainProgressBar =  findViewById(R.id.prgrBar);
         Bundle parametros = this.getIntent().getExtras();
-        String ytLink = parametros.getString("urlVideo");
+        String video = parametros.getString("video");
         String category = parametros.getString("category");
         String product = parametros.getString("product");
-        indexCat =Integer.parseInt(category);
-        indexProd=Integer.parseInt(product);
-        ytLink = ytLink.replaceAll("embed/", "");
-        ytLink = ytLink.substring(0,ytLink.length()-18);
-        ytLink = ytLink.replaceAll("youtube.com/", "youtube.com/watch?v=");
-        getYoutubeDownloadUrl(ytLink);
-
-    }
-
-    @SuppressLint("StaticFieldLeak")
-    private void getYoutubeDownloadUrl(String youtubeLink) {
-        new YouTubeExtractor(this) {
-            @Override
-            public void onExtractionComplete(SparseArray<YtFile> ytFiles, VideoMeta vMeta) {
-                mainProgressBar.setVisibility(View.GONE);
-                if (ytFiles == null) {
-                    finish();
-                    return;
-                }
-                for (int i = 0, itag; i < ytFiles.size(); i++) {
-                    itag = ytFiles.keyAt(i);
-                    YtFile ytFile = ytFiles.get(itag);
-                    if (ytFile.getFormat().getHeight() >= 144) {
-                        addButtonToMainLayout(vMeta.getTitle(), ytFile);
-                    }
-                }
+        if (category != null) {
+            indexCat =Integer.parseInt(category);
+        }
+        if (product != null) {
+            indexProd=Integer.parseInt(product);
+        }
+        AppCategoryI appCategory = new AppCategory();
+        CategoryI categoryI = appCategory.getCategory(indexCat);
+        SubCategoryI productI = categoryI.getProduct(indexProd);
+        List<ElementSC> elements = productI.getElements();
+        for (ElementSC e:elements){
+            if(e.getFileName().equals(video)){
+                elementSC = e;
+                ListFormatSave aux = elementSC.getFormatDownload();
+                listUrlsDownload = aux.getListUrlsDownload();
+             break;
             }
-        }.extract(youtubeLink, true, false);
+        }
+        getYoutubeDownloadUrl();
     }
 
-    @SuppressLint("ResourceAsColor")
-    private void addButtonToMainLayout(final String videoTitle, final YtFile ytFrVideo) {
-        // Display some buttons and let the user choose the format
-        String btnText="";
-        if(ytFrVideo.getFormat().getItag()==135){
-            btnText = ytFrVideo.getFormat().getExt()+"( mute )\t\t"+ytFrVideo.getFormat().getHeight() + "p";
+    private void getYoutubeDownloadUrl() {
+        for (FileDownload fileDownload: listUrlsDownload){
+            addButtonToMainLayout(fileDownload);
         }
-        else{
-            btnText = ytFrVideo.getFormat().getExt()+"\t\t\t\t"+ytFrVideo.getFormat().getHeight() + "p";
-        }
+    }
 
-
+    private void addButtonToMainLayout(final FileDownload fileDownload) {
+        String btnText;
+        btnText = fileDownload.getUrlFormat()+ "p";
         Button btn = new Button(this);
         btn.setText(btnText);
         btn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                String filename;
-                if (videoTitle.length() > 40) {
-                    filename = videoTitle.substring(0, 40);
-                } else {
-                    filename = videoTitle;
-                }
-                filename = filename.replaceAll("[\\\\><\"|*?%:#/]", "");
-                if (ytFrVideo.getFormat() != null) {
-                    downloadFromUrl(ytFrVideo.getUrl(), videoTitle,
-                            filename + ".mp4");
-                    Toast.makeText(Download.this,"Descargando: "+videoTitle,Toast.LENGTH_LONG).show();
-                }
-
+                removeFileSearchName();
+                downloadFromUrl(fileDownload.getUrlFile(), elementSC.getFileName(),
+                        elementSC.getFileName() + "."+fileDownload.getFormat());
                 finish();
             }
         });
         mainLayout.addView(btn);
     }
-
+    private void removeFileSearchName() {
+        String URLS1 = "/download/"+elementSC.getFileName()+".mp4";
+        String URLS2 = "/download/"+elementSC.getFileName()+".3gp";
+        File dir1 = new File(Environment.getExternalStorageDirectory()+URLS1);
+        File dir2 = new File(Environment.getExternalStorageDirectory()+URLS2);
+        if(dir1.delete() || dir2.delete()){
+            Toast.makeText(Download.this,"Modificando: "+elementSC.getFileName(),Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(Download.this,"Descargando: "+elementSC.getFileName(),Toast.LENGTH_LONG).show();
+        }
+    }
     private void downloadFromUrl(String youtubeDlUrl, String downloadTitle, String fileName) {
         Uri uri = Uri.parse(youtubeDlUrl);
-        DownloadManager.Request request = new DownloadManager.Request(uri);
-        request.setTitle(downloadTitle);
-        request.allowScanningByMediaScanner();
+        //Uri uri = Uri.parse("http://eduardperez.000webhostapp.com/video/1_1.mp4");
 
+        //DownloadManager.Request request = new DownloadManager.Request(uri);
+        //request.setTitle(downloadTitle);
+        //request.allowScanningByMediaScanner();
+
+        //request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        //request.setDestinationInExternalPublicDir("/astrix/", fileName);
+        //DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+        //manager.enqueue(request);
+
+        DownloadManager downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
+        String s = Environment.getExternalStorageDirectory()+"";
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+        request.setDestinationInExternalPublicDir(s ,fileName);
+        request.setTitle(downloadTitle);
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalPublicDir("/astrix/", fileName);
-        saveChangesData(fileName);
-        DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-        manager.enqueue(request);
+        Long ref = downloadManager.enqueue(request);
+
     }
-    private void saveChangesData(String filename){
-        //serializar object to save changes
-    }
+
 }

@@ -11,20 +11,35 @@ import com.software.program.astrixsa.R;
 
 public class ViewVideoDownloaded extends AppCompatActivity {
     private VideoView videoView;
-
+    private static String FILE ="/storage/emulated/0/download/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_video_downloaded);
         videoView = findViewById(R.id.videodownloaded);
-        //String urlVideo = "/storage/extSdCard/astrix/Kudai.mp4";
         Bundle parametros = this.getIntent().getExtras();
         String filename = parametros.getString("urlVideo");
-        String URLS = "/storage/emulated/0/astrix/"+filename+".mp4";
-        Uri uri = Uri.parse(URLS);
-        configurateVideo(uri);
-    }
+        playVideo(filename);
 
+    }
+    private void playVideo(String filename){
+        String URLS1 = FILE+filename+".mp4";
+        String URLS2 = FILE+filename+".3gp";
+        Uri uri1 = Uri.parse(URLS1);
+        Uri uri2 = Uri.parse(URLS2);
+        int e = 1;
+        try {
+            configurateVideo(uri2);
+
+        }
+        catch (Exception ex){
+            e = 0;
+        }
+        if(e==0){
+            configurateVideo(uri1);
+        }
+
+    }
     private void configurateVideo(Uri uri) {
         videoView.setMediaController(new MediaController(this));
         videoView.setVideoURI(uri);
