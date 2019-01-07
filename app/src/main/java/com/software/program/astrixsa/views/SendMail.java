@@ -125,6 +125,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
             cuerpo += "Correo electronico: "+mailRemitente+"\n";
         }
         cuerpo +=  "Comentario: "+mensajeRemitente;
+
         return cuerpo;
     }
 }

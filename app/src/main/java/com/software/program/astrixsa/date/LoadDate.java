@@ -27,11 +27,15 @@ public final class LoadDate {
         String url3 = "https://www.youtube.com/embed/oeYKN6dFOcA?rel=0;&autoplay=1";
         String url4 = "https://www.youtube.com/embed/6Xs6-j2DIdY?rel=0;&autoplay=1";
         String url5 = "https://www.youtube.com/embed/eVzVxS5Pe9A?rel=0;&autoplay=1";
+        String url6 = "https://www.youtube.com/embed/WwmYW3tAR7M?rel=0;&autoplay=1";//creado bolivia
+        String url7 = "https://www.youtube.com/embed/sqHhk1d2nvA?rel=0;&autoplay=1";//medio
         Integer images1 = R.id.primero;
         Integer images2 = R.id.segundo;
         Integer images3 = R.id.tercero;
         Integer images4 = R.id.cuarto;
         Integer images5 = R.id.quinto;
+        Integer images6 = R.id.sexto;
+        Integer images7 = R.id.septimo;
         /*1*/
         ElementSC elementSC1 = new ElementSC(url1,images1);
         FileDownload format720_1 = new FileDownload("mp4","mp4\t\t\t\t720","http://eduardperez.000webhostapp.com/video/1_1.mp4");//https://r1---sn-5h25gvcg-8j2e.googlevideo.com/videoplayback?sparams=dur%2Cei%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cratebypass%2Crequiressl%2Csource%2Cexpire&itag=22&ipbits=0&mm=31%2C29&mn=sn-5h25gvcg-8j2e%2Csn-bg0ezn7s&ms=au%2Crdu&source=youtube&mv=m&mime=video%2Fmp4&key=yt6&fvip=5&dur=89.861&id=o-AEOxWP08k2lP-FwHl4j272w3dWKea2_qHAZcFSfQlqSx&initcwndbps=463750&txp=2211222&pl=24&mt=1546698354&c=WEB&ei=374wXMLnHNiFobIPv5ORwAE&ratebypass=yes&lmt=1544513492115151&ip=131.72.140.70&expire=1546720063&requiressl=yes&signature=AB1EE63D458C094D63B1C6A0657FFE8614CD4C11.DB3B0E4229191D56CCA40F0B8A50321C486DC9D0&video_id=dRwq9rAZGyA&title=Detergente+OLA+FUTURO+Polvo+-+Remoci%C3%B3n+de+manchas");
@@ -87,13 +91,40 @@ public final class LoadDate {
         list5.addUrl(format720_5);
         elementSC5.setListFormatSave(list5);
         elementSC5.setFileName("Detergente OLA FUTURO - Acción Antibacte");
+
+        ElementSC elementSC6 = new ElementSC(url6,images6);
+        FileDownload format720_6 = new FileDownload("mp4","mp4\t\t\t\t720","http://eduardperez.000webhostapp.com/video/6_1.mp4");
+        FileDownload format360_6 = new FileDownload("mp4","mp4\t\t\t\t360","http://eduardperez.000webhostapp.com/video/6_2.mp4");
+        FileDownload format240_6 = new FileDownload("3gp","3gp\t\t\t\t240","http://eduardperez.000webhostapp.com/video/6_3.mp4");
+        ListFormatSave list6 = new ListFormatSave();
+        list6.addUrl(format240_6);
+        list6.addUrl(format360_6);
+        list6.addUrl(format720_6);
+        elementSC6.setListFormatSave(list6);
+        elementSC6.setFileName("Detergente OLA FUTURO - creadoBolivia");
+
+
+        ElementSC elementSC7 = new ElementSC(url7,images7);
+        FileDownload format720_7 = new FileDownload("mp4","mp4\t\t\t\t720","http://eduardperez.000webhostapp.com/video/7_1.mp4");
+        FileDownload format360_7 = new FileDownload("mp4","mp4\t\t\t\t360","http://eduardperez.000webhostapp.com/video/7_2.mp4");
+        FileDownload format240_7 = new FileDownload("3gp","3gp\t\t\t\t240","http://eduardperez.000webhostapp.com/video/7_3.mp4");
+        ListFormatSave list7 = new ListFormatSave();
+        list7.addUrl(format240_7);
+        list7.addUrl(format360_7);
+        list7.addUrl(format720_7);
+        elementSC7.setListFormatSave(list7);
+        elementSC7.setFileName("Detergente OLA FUTURO - beneficios");
+
+
+        //add subcategories
         SubCategoryI product1 = new SubCategory(OlaFuturoMaquina,detergentePolvo, producto1);
         product1.addElement(elementSC1);
         product1.addElement(elementSC2);
         product1.addElement(elementSC3);
         product1.addElement(elementSC4);
         product1.addElement(elementSC5);
-
+        product1.addElement(elementSC6);
+        product1.addElement(elementSC7);
         CategoryI category = new Category(lavadoYCuidadoRopa,categoria1);
         category.addProduct(product1);
         return category;

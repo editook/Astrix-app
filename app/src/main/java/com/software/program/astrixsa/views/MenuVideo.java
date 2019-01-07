@@ -37,6 +37,7 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
     private SubCategoryI subCategoryI;
     private int indexProd,indexCat;
     private Button botonSugerencias;
+    private static final String DIRECCION ="/Android/data/com.software.program.astrixsa/files/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -50,7 +51,7 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
         indexProd = Integer.parseInt(product);
         indexCat = Integer.parseInt(category);
         createViews(indexProd,indexCat);
-        botonSugerencias = (Button)findViewById(R.id.botonSugerencias);
+        botonSugerencias = findViewById(R.id.botonSugerencias);
         botonSugerencias.setOnClickListener(this);
     }
 
@@ -108,8 +109,8 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
 
     private boolean getFileSearchName(int id) {
         ElementSC element = subCategoryI.getElement(id);
-        String URLS1 = "/download/"+element.getFileName()+".mp4";
-        String URLS2 = "/download/"+element.getFileName()+".3gp";
+        String URLS1 = DIRECCION+element.getFileName()+".mp4";
+        String URLS2 = DIRECCION+element.getFileName()+".3gp";
         File dir1 = new File(Environment.getExternalStorageDirectory()+URLS1);
         File dir2 = new File(Environment.getExternalStorageDirectory()+URLS2);
         return dir1.getAbsoluteFile().isFile()|dir2.getAbsoluteFile().isFile();

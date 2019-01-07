@@ -2,41 +2,45 @@ package com.software.program.astrixsa.views;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.software.program.astrixsa.R;
 
+import java.io.File;
+
 public class ViewVideoDownloaded extends AppCompatActivity {
     private VideoView videoView;
-    private static String FILE ="/storage/emulated/0/download/";
+    private static String FILE ="/storage/emulated/0/Astrix/";
+    private static final String DIRECCION ="storage/emulated/0/Android/data/com.software.program.astrixsa/files/";
+    String filename;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_video_downloaded);
         videoView = findViewById(R.id.videodownloaded);
         Bundle parametros = this.getIntent().getExtras();
-        String filename = parametros.getString("urlVideo");
+        filename = parametros.getString("urlVideo");
         playVideo(filename);
 
     }
-    private void playVideo(String filename){
-        String URLS1 = FILE+filename+".mp4";
-        String URLS2 = FILE+filename+".3gp";
-        Uri uri1 = Uri.parse(URLS1);
-        Uri uri2 = Uri.parse(URLS2);
-        int e = 1;
-        try {
-            configurateVideo(uri2);
 
-        }
-        catch (Exception ex){
-            e = 0;
-        }
-        if(e==0){
+    private void playVideo(String filename){
+        Uri uri1 = Uri.parse(DIRECCION+filename+".mp4");
+        Uri uri2 = Uri.parse(DIRECCION+filename+".3gp");
+
+
+        String URLS1 = DIRECCION+filename+".mp4";
+        File dir1 = new File(URLS1);
+        if(dir1.isFile()){
             configurateVideo(uri1);
+        }
+        else{
+            configurateVideo(uri2);
         }
 
     }
