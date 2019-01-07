@@ -6,28 +6,60 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.software.program.astrixsa.R;
+import com.software.program.astrixsa.system.app.AppCategory;
+import com.software.program.astrixsa.system.app.AppCategoryI;
+import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
+import com.software.program.astrixsa.system.app.productmanager.Product;
+import com.software.program.astrixsa.system.app.subcategorymanager.SubCategoryI;
+
+import java.util.List;
 
 public class ViewProduct extends AppCompatActivity {
     /*example of dates*/
-    private static final String[] products = new String[]{"OLA FUTURO Máquina "};
-    private static final String[] descriptions = new String[]{"Detergente en Polvo "};
-    private static final Integer[] images = new Integer[]{R.drawable.olafuturo};
+    private String[] products;
+    private String[] descriptions;
+    private Integer[] images;
     private ListView listView;
+    private Button botonSugerencias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
-        listView = (ListView) findViewById(R.id.listvideos);
-        createListView();
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        listView = findViewById(R.id.listvideos);
+        //index list SubCategory
+        Bundle parametros = this.getIntent().getExtras();
+        String product =  parametros.getString("category");
+        int index = Integer.parseInt(product);
+        createListView(index);
+      //  ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+    private void updateList(List<SubCategoryI>productsList){
+        int size = productsList.size();
+        products = new String[size];
+        descriptions = new String[size];
+        images = new Integer[size];
+        int indexProduct = 0;
+        for (SubCategoryI product:productsList){
+            Product info = (Product) product;
+            products[indexProduct] = info.getName();
+            descriptions[indexProduct] = info.getDescripcion();
+            images[indexProduct] = info.getImage();
+            indexProduct++;
+        }
+    }
+    private void createListView(int index) {
+        final int valueIndexProduct = index;
+        AppCategoryI appCategory = new AppCategory();
+        CategoryI category = appCategory.getCategory(index);
+        List<SubCategoryI> subCategoryIList = category.getProducts();
+        updateList(subCategoryIList);
 
-    private void createListView() {
         final ListAdapter listAdapter = new ListAdapter(this, images, descriptions, products);
         listView.setAdapter(listAdapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -35,8 +67,11 @@ public class ViewProduct extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ViewProduct.this, MenuVideo.class);
+                intent.putExtra("category", valueIndexProduct+"");
+                intent.putExtra("product", position+"");
                 startActivity(intent);
             }
         });
     }
+
 }
