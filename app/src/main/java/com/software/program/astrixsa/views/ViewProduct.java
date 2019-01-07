@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.software.program.astrixsa.R;
@@ -23,6 +24,7 @@ public class ViewProduct extends AppCompatActivity {
     private String[] descriptions;
     private Integer[] images;
     private ListView listView;
+    private Button botonSugerencias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +36,8 @@ public class ViewProduct extends AppCompatActivity {
         String product =  parametros.getString("category");
         int index = Integer.parseInt(product);
         createListView(index);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+      //  ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     private void updateList(List<SubCategoryI>productsList){
         int size = productsList.size();
@@ -71,4 +73,5 @@ public class ViewProduct extends AppCompatActivity {
             }
         });
     }
+
 }

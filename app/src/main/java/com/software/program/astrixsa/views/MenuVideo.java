@@ -1,28 +1,47 @@
 package com.software.program.astrixsa.views;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.software.program.astrixsa.R;
 import com.software.program.astrixsa.system.app.AppCategory;
 import com.software.program.astrixsa.system.app.AppCategoryI;
 import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
+import com.software.program.astrixsa.system.app.productmanager.ProductI;
 import com.software.program.astrixsa.system.app.subcategorymanager.ElementSC;
 import com.software.program.astrixsa.system.app.subcategorymanager.SubCategoryI;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
-public class MenuVideo extends AppCompatActivity {
+public class MenuVideo extends AppCompatActivity implements View.OnClickListener {
     private SubCategoryI subCategoryI;
     private int indexProd,indexCat;
+    private Button botonSugerencias;
+    private static final String DIRECCION ="/Android/data/com.software.program.astrixsa/files/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vista);
         //index list SubCategory
@@ -32,11 +51,10 @@ public class MenuVideo extends AppCompatActivity {
         indexProd = Integer.parseInt(product);
         indexCat = Integer.parseInt(category);
         createViews(indexProd,indexCat);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
+        botonSugerencias = findViewById(R.id.botonSugerencias);
+        botonSugerencias.setOnClickListener(this);
     }
+
     private void updateList(List<ElementSC> elementSCS){
         int indexProduct = 0;
         for (ElementSC element: elementSCS){
@@ -68,6 +86,7 @@ public class MenuVideo extends AppCompatActivity {
         Button button = view.findViewById(R.id.playvideo);
         String name = button.getText().toString();
         final ElementSC elementSC = subCategoryI.getElement(Integer.parseInt(idVideo));
+        elementSC.setState(getFileSearchName(Integer.parseInt(idVideo)));
         button.setText(name+ elementSC.state());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +98,7 @@ public class MenuVideo extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                downloadVideo(elementSC);
+                downloadVideo(elementSC,idVideo);
             }
 
         });
@@ -88,12 +107,23 @@ public class MenuVideo extends AppCompatActivity {
         alertDialog.show();
     }
 
-    private void downloadVideo(ElementSC elementSC) {
+    private boolean getFileSearchName(int id) {
+        ElementSC element = subCategoryI.getElement(id);
+        String URLS1 = DIRECCION+element.getFileName()+".mp4";
+        String URLS2 = DIRECCION+element.getFileName()+".3gp";
+        File dir1 = new File(Environment.getExternalStorageDirectory()+URLS1);
+        File dir2 = new File(Environment.getExternalStorageDirectory()+URLS2);
+        return dir1.getAbsoluteFile().isFile()|dir2.getAbsoluteFile().isFile();
+    }
+
+    private void downloadVideo(ElementSC elementSC, String idVideo) {
+
         Intent actividad = new Intent(MenuVideo.this, Download.class);
-        actividad.putExtra("urlVideo", elementSC.getUrl());
+        actividad.putExtra("video", elementSC.getFileName());
         actividad.putExtra("category", indexCat+"");
         actividad.putExtra("product", indexProd+"");
         startActivity(actividad);
+
     }
     private void playVideo(ElementSC elementSC){
         Intent actividad = new Intent(MenuVideo.this, ViewVideoDownloaded.class);
@@ -105,6 +135,12 @@ public class MenuVideo extends AppCompatActivity {
             actividad.putExtra("urlVideo", elementSC.getFileName());
         }
         startActivity(actividad);
+
+    }
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(MenuVideo.this, SendMailView.class);
+        startActivity(intent);
     }
 
 }
