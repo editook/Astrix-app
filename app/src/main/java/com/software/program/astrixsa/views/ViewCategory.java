@@ -8,23 +8,44 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.software.program.astrixsa.R;
+import com.software.program.astrixsa.system.app.AppCategory;
+import com.software.program.astrixsa.system.app.AppCategoryI;
+import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
+import com.software.program.astrixsa.system.app.productmanager.Product;
+
+import java.util.List;
 
 public class ViewCategory extends AppCompatActivity {
-    /*example of dates*/
-    private static final String[] products = new String[]{"  LAVADO Y CUIDADO DE LA ROPA"};
-    private static final String[] descriptions = new String[]{""};
-    private static final Integer[] images = new Integer[]{R.drawable.categoria};
+    private String[] products;
+    private String[] descriptions;
+    private Integer[] images;
     private ListView listView;
-
+    private AppCategoryI appCategory;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
-        listView = (ListView) findViewById(R.id.listvideos);
+        listView = findViewById(R.id.listvideos);
+        appCategory = new AppCategory();
         createListView();
     }
-
+    private void updateList(List<CategoryI>categories){
+        int size = categories.size();
+        products = new String[size];
+        descriptions = new String[size];
+        images = new Integer[size];
+        int indexCategory = 0;
+        for (CategoryI category:categories){
+            Product info = (Product) category;
+            products[indexCategory] = info.getName();
+            descriptions[indexCategory] = info.getDescripcion();
+            images[indexCategory] = info.getImage();
+            indexCategory++;
+        }
+    }
     private void createListView() {
+        final List<CategoryI> categoryIList = appCategory.getListCategories();
+        updateList(categoryIList);
         final ListAdapter listAdapter = new ListAdapter(this, images, descriptions, products);
         listView.setAdapter(listAdapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -32,6 +53,7 @@ public class ViewCategory extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ViewCategory.this, ViewProduct.class);
+                intent.putExtra("category", position+"");
                 startActivity(intent);
             }
         });

@@ -17,4 +17,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppThemeMyLight" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">#0091ea</item>
+    </style>
 </resources>

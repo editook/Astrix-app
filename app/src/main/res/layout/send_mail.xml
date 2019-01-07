@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAzulOscuro"/>
+    <EditText
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:backgroundTint="@color/colorAzulOscuro"
+        android:textColor="@color/black"
+        android:id="@+id/nombre" />
+    <TextView
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Correo Electronico(Opcional)"
+        android:layout_width="wrap_content"
+        android:textColor="@color/colorAzulOscuro"
+        android:layout_height="wrap_content" />
+    <EditText
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAzulOscuro"
+        android:textColor="@color/black"
+        android:id="@+id/email" />
+    <TextView
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Telefono(Opcional)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAzulOscuro"
+        />
+    <EditText
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone "
+        android:textColor="@color/black"
+        android:backgroundTint="@color/colorAzulOscuro"
+        android:id="@+id/telefono" />
+    <TextView
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Mensaje"
+        android:textColor="@color/colorAzulOscuro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:lines="4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/colorAzulOscuro"
+        android:id="@+id/mensaje" />
+    <Button
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/botonEnviar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorAzulOscuro"
+        android:text="Enviar"/>
+
+</LinearLayout>
