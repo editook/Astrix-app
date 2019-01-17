@@ -18,7 +18,7 @@ public final class LoadDate {
         String lavadoYCuidadoRopa = "LAVADO Y CUIDADO DE LA ROPA";
         Integer categoria1 = R.drawable.categoria;
 
-        String OlaFuturoMaquina = "Ola FUTURO Máquina";
+        String OlaFuturoMaquina = "OLA FUTURO Máquina";
         String detergentePolvo = "Detergente en Polvo";
         Integer producto1 = R.drawable.olafuturo;
 
