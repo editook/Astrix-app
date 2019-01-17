@@ -98,7 +98,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
             MimeMessage mm = new MimeMessage(session);
 
             //Setting sender address
-            mm.setFrom(new InternetAddress(Config.EMAIL));
+            mm.setFrom(new InternetAddress(Config.EMAIL));//ola.cid.astrix@gmail.com
             //Adding receiver
             mm.addRecipient(Message.RecipientType.TO, new InternetAddress("ola.cid.astrix@gmail.com"));
             //Adding subject
