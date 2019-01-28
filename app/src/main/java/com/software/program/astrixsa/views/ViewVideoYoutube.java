@@ -1,6 +1,6 @@
 package com.software.program.astrixsa.views;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.webkit.WebSettings;
@@ -8,9 +8,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.software.program.astrixsa.R;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by user on 30/11/2018.

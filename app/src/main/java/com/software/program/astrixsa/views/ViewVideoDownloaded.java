@@ -2,11 +2,10 @@ package com.software.program.astrixsa.views;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.MediaController;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.software.program.astrixsa.R;

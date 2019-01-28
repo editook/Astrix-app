@@ -1,0 +1,15 @@
+
+
+CREATE TABLE Category (
+ category_Id integer PRIMARY KEY AUTOINCREMENT,
+ category_Name text NOT NULL
+);
+
+INSERT INTO Category(category_Name)
+          VALUES('Joaquiiiiin');
+INSERT INTO Category(category_Name)
+          VALUES('Manolo');
+INSERT INTO Category(category_Name)
+          VALUES('Eustaquioooo');
+
+
