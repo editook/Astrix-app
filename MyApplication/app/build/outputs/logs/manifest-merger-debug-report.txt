@@ -1,0 +1,186 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:2:1-21:12
+MERGED from [androidx.room:room-rxjava2:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-rxjava2-2.1.0-alpha03.aar\8b1e39c8cfa00edd53cd32db039a17d4\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.room:room-guava:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-guava-2.1.0-alpha03.aar\d3fb8297ec4c4419607eadc999bbb2b6\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.room:room-coroutines:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-coroutines-2.1.0-alpha03.aar\cc5f30cab5956c5e0dc5276dd05f7ac3\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.room:room-runtime:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-runtime-2.1.0-alpha03.aar\68ecf965f89edea283e2fcf84903d77a\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\constraintlayout-2.0.0-alpha3.aar\a14f5fada651ba2295ad81e7fefed6e8\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\appcompat-1.1.0-alpha01.aar\7eb17fc71fb0b5bf9b37783575588536\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite-framework:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\sqlite-framework-2.0.0.aar\64cc51694bda8a05ac8eab674d7d2c03\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\sqlite-2.0.0.aar\3882012166f2bfeca909efc66f991f7d\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.1.0-alpha02] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\fragment-1.1.0-alpha02.aar\fde1ae8bab6dc7aa46d0266697bb7d15\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.0.0-rc01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\recyclerview-1.0.0-rc01.aar\49496f08a3db41fa5adf936347438dfb\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\vectordrawable-animated-1.0.0.aar\a4d3c77473a24f2ef556dddd10cbc033\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\legacy-support-core-ui-1.0.0.aar\23b464c9bd32e4f3135ef615cda5892a\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\legacy-support-core-utils-1.0.0.aar\37c327eceb8078a9944f9bdf1eb9bb89\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\loader-1.0.0.aar\3243b232095354779aab1dcce2724281\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-2.0.0.aar\e8d423e3c9cc8284f6a6146fabf21569\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-core-2.0.0.aar\262c1cdb52aec2db71cb97366cf51607\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\core-runtime-2.0.0.aar\7ad68cd024983ff8e69e8d0ba659fa1e\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0-alpha02] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\activity-1.0.0-alpha02.aar\d2f58889c48ec3d88d086b60461b476c\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\drawerlayout-1.0.0.aar\3ea8bd17f7bba512e6d46496511183b6\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\viewpager-1.0.0.aar\89c2b61e5d7370d40115f1d113bb5af4\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\vectordrawable-1.0.1.aar\f5276b2448b7faecfe0c122d120745c3\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-1.0.0.aar\74bd055d3571fe89c26a44c2baed1ee9\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-1.0.0.aar\a218597c8af0d4729243244ecb79cc7f\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\customview-1.0.0.aar\8ce1ccb9313e1a8e281ed899e1ca8520\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-1.0.0.aar\725288067e87a851ba5c566c295cb74e\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-1.0.0.aar\fae5fd3ed7c1b7dbff82d91326090717\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\core-1.1.0-alpha01.aar\dfb323b7d8278fe4613887b345645f13\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0-alpha01.aar\5771b74f516d0f3189ed55dd10626cd9\AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\lifecycle-runtime-2.0.0.aar\07c9a6c2747f8b628796c268eb235b8c\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\lifecycle-viewmodel-2.0.0.aar\9648576f041ab27607d312d97f882701\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\cursoradapter-1.0.0.aar\473c3ed11f1deb1b375790dfcc5e9256\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\print-1.0.0.aar\eb068abc5f3be364647a2cf566ab8aa1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-1.0.0.aar\b287128fdebf56e87c06af7846c3ee39\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\documentfile-1.0.0.aar\fb5d0239032858116d3c4bf80c7b55c1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\interpolator-1.0.0.aar\4b1e2e5a91551cc4b6115b35ecccab00\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:2:1-21:12
+	package
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:3:5-53
+		INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:2:1-21:12
+		INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:2:1-21:12
+		INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:2:11-69
+application
+ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:5:5-19:19
+MERGED from [androidx.room:room-runtime:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-runtime-2.1.0-alpha03.aar\68ecf965f89edea283e2fcf84903d77a\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.room:room-runtime:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-runtime-2.1.0-alpha03.aar\68ecf965f89edea283e2fcf84903d77a\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\constraintlayout-2.0.0-alpha3.aar\a14f5fada651ba2295ad81e7fefed6e8\AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\constraintlayout-2.0.0-alpha3.aar\a14f5fada651ba2295ad81e7fefed6e8\AndroidManifest.xml:9:5-20
+MERGED from [androidx.core:core:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\core-1.1.0-alpha01.aar\dfb323b7d8278fe4613887b345645f13\AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\core-1.1.0-alpha01.aar\dfb323b7d8278fe4613887b345645f13\AndroidManifest.xml:22:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0-alpha01.aar\5771b74f516d0f3189ed55dd10626cd9\AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0-alpha01.aar\5771b74f516d0f3189ed55dd10626cd9\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\core-1.1.0-alpha01.aar\dfb323b7d8278fe4613887b345645f13\AndroidManifest.xml:22:18-86
+	android:supportsRtl
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:11:9-40
+activity#com.example.davorheredia.myapplication.MainActivity
+ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:12:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml:16:27-74
+uses-sdk
+INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+MERGED from [androidx.room:room-rxjava2:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-rxjava2-2.1.0-alpha03.aar\8b1e39c8cfa00edd53cd32db039a17d4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-rxjava2:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-rxjava2-2.1.0-alpha03.aar\8b1e39c8cfa00edd53cd32db039a17d4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-guava:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-guava-2.1.0-alpha03.aar\d3fb8297ec4c4419607eadc999bbb2b6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-guava:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-guava-2.1.0-alpha03.aar\d3fb8297ec4c4419607eadc999bbb2b6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-coroutines:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-coroutines-2.1.0-alpha03.aar\cc5f30cab5956c5e0dc5276dd05f7ac3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-coroutines:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-coroutines-2.1.0-alpha03.aar\cc5f30cab5956c5e0dc5276dd05f7ac3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-runtime:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-runtime-2.1.0-alpha03.aar\68ecf965f89edea283e2fcf84903d77a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-runtime:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-runtime-2.1.0-alpha03.aar\68ecf965f89edea283e2fcf84903d77a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\constraintlayout-2.0.0-alpha3.aar\a14f5fada651ba2295ad81e7fefed6e8\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\constraintlayout-2.0.0-alpha3.aar\a14f5fada651ba2295ad81e7fefed6e8\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\appcompat-1.1.0-alpha01.aar\7eb17fc71fb0b5bf9b37783575588536\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\appcompat-1.1.0-alpha01.aar\7eb17fc71fb0b5bf9b37783575588536\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\sqlite-framework-2.0.0.aar\64cc51694bda8a05ac8eab674d7d2c03\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\sqlite-framework-2.0.0.aar\64cc51694bda8a05ac8eab674d7d2c03\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\sqlite-2.0.0.aar\3882012166f2bfeca909efc66f991f7d\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\sqlite-2.0.0.aar\3882012166f2bfeca909efc66f991f7d\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.1.0-alpha02] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\fragment-1.1.0-alpha02.aar\fde1ae8bab6dc7aa46d0266697bb7d15\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.1.0-alpha02] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\fragment-1.1.0-alpha02.aar\fde1ae8bab6dc7aa46d0266697bb7d15\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0-rc01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\recyclerview-1.0.0-rc01.aar\49496f08a3db41fa5adf936347438dfb\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0-rc01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\recyclerview-1.0.0-rc01.aar\49496f08a3db41fa5adf936347438dfb\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\vectordrawable-animated-1.0.0.aar\a4d3c77473a24f2ef556dddd10cbc033\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\vectordrawable-animated-1.0.0.aar\a4d3c77473a24f2ef556dddd10cbc033\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\legacy-support-core-ui-1.0.0.aar\23b464c9bd32e4f3135ef615cda5892a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\legacy-support-core-ui-1.0.0.aar\23b464c9bd32e4f3135ef615cda5892a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\legacy-support-core-utils-1.0.0.aar\37c327eceb8078a9944f9bdf1eb9bb89\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\legacy-support-core-utils-1.0.0.aar\37c327eceb8078a9944f9bdf1eb9bb89\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\loader-1.0.0.aar\3243b232095354779aab1dcce2724281\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\loader-1.0.0.aar\3243b232095354779aab1dcce2724281\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-2.0.0.aar\e8d423e3c9cc8284f6a6146fabf21569\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-2.0.0.aar\e8d423e3c9cc8284f6a6146fabf21569\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-core-2.0.0.aar\262c1cdb52aec2db71cb97366cf51607\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-core-2.0.0.aar\262c1cdb52aec2db71cb97366cf51607\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\core-runtime-2.0.0.aar\7ad68cd024983ff8e69e8d0ba659fa1e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\core-runtime-2.0.0.aar\7ad68cd024983ff8e69e8d0ba659fa1e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0-alpha02] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\activity-1.0.0-alpha02.aar\d2f58889c48ec3d88d086b60461b476c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0-alpha02] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\activity-1.0.0-alpha02.aar\d2f58889c48ec3d88d086b60461b476c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\drawerlayout-1.0.0.aar\3ea8bd17f7bba512e6d46496511183b6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\drawerlayout-1.0.0.aar\3ea8bd17f7bba512e6d46496511183b6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\viewpager-1.0.0.aar\89c2b61e5d7370d40115f1d113bb5af4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\viewpager-1.0.0.aar\89c2b61e5d7370d40115f1d113bb5af4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\vectordrawable-1.0.1.aar\f5276b2448b7faecfe0c122d120745c3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\vectordrawable-1.0.1.aar\f5276b2448b7faecfe0c122d120745c3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-1.0.0.aar\74bd055d3571fe89c26a44c2baed1ee9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-1.0.0.aar\74bd055d3571fe89c26a44c2baed1ee9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-1.0.0.aar\a218597c8af0d4729243244ecb79cc7f\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-1.0.0.aar\a218597c8af0d4729243244ecb79cc7f\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\customview-1.0.0.aar\8ce1ccb9313e1a8e281ed899e1ca8520\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\customview-1.0.0.aar\8ce1ccb9313e1a8e281ed899e1ca8520\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-1.0.0.aar\725288067e87a851ba5c566c295cb74e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-1.0.0.aar\725288067e87a851ba5c566c295cb74e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-1.0.0.aar\fae5fd3ed7c1b7dbff82d91326090717\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-1.0.0.aar\fae5fd3ed7c1b7dbff82d91326090717\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\core-1.1.0-alpha01.aar\dfb323b7d8278fe4613887b345645f13\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\core-1.1.0-alpha01.aar\dfb323b7d8278fe4613887b345645f13\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0-alpha01.aar\5771b74f516d0f3189ed55dd10626cd9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-alpha01] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0-alpha01.aar\5771b74f516d0f3189ed55dd10626cd9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\lifecycle-runtime-2.0.0.aar\07c9a6c2747f8b628796c268eb235b8c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\lifecycle-runtime-2.0.0.aar\07c9a6c2747f8b628796c268eb235b8c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\lifecycle-viewmodel-2.0.0.aar\9648576f041ab27607d312d97f882701\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\lifecycle-viewmodel-2.0.0.aar\9648576f041ab27607d312d97f882701\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\cursoradapter-1.0.0.aar\473c3ed11f1deb1b375790dfcc5e9256\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\cursoradapter-1.0.0.aar\473c3ed11f1deb1b375790dfcc5e9256\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\print-1.0.0.aar\eb068abc5f3be364647a2cf566ab8aa1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\print-1.0.0.aar\eb068abc5f3be364647a2cf566ab8aa1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-1.0.0.aar\b287128fdebf56e87c06af7846c3ee39\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-1.0.0.aar\b287128fdebf56e87c06af7846c3ee39\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\documentfile-1.0.0.aar\fb5d0239032858116d3c4bf80c7b55c1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\documentfile-1.0.0.aar\fb5d0239032858116d3c4bf80c7b55c1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\interpolator-1.0.0.aar\4b1e2e5a91551cc4b6115b35ecccab00\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\interpolator-1.0.0.aar\4b1e2e5a91551cc4b6115b35ecccab00\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Davor Heredia\Desktop\astrix-app\MyApplication\app\src\main\AndroidManifest.xml
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-runtime-2.1.0-alpha03.aar\68ecf965f89edea283e2fcf84903d77a\AndroidManifest.xml:23:9-25:40
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-runtime-2.1.0-alpha03.aar\68ecf965f89edea283e2fcf84903d77a\AndroidManifest.xml:25:13-37
+	android:name
+		ADDED from [androidx.room:room-runtime:2.1.0-alpha03] C:\Users\Davor Heredia\.gradle\caches\transforms-1\files-1.1\room-runtime-2.1.0-alpha03.aar\68ecf965f89edea283e2fcf84903d77a\AndroidManifest.xml:24:13-74
