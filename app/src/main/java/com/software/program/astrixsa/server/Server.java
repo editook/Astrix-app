@@ -75,7 +75,7 @@ public class Server  extends AsyncTask<Void,Void,Void> {
         try {
 
             JSONObject versionJSON = getJSONFromURL("https://astrixserviceapp.000webhostapp.com/api/version/");
-            JSONArray jsonArray = versionJSON.getJSONArray("version");
+            JSONArray jsonArray = versionJSON.getJSONArray("versions");
             JSONObject currentVersionJSON = (JSONObject) jsonArray.get(0);
             String versionName = currentVersionJSON.get("version").toString();
             if(!versionName.equals(Util.CURRENT_VERSION)){

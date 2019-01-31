@@ -67,7 +67,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
     public void updateVersion(String newVersion){
         SQLiteDatabase db = this.getWritableDatabase();
         int isDownloaded = 1;
-        db.execSQL("UPDATE STATUS SET VERSION = '"+newVersion+"', ISDOWNLOADED= '"+isDownloaded+"' WHERE ID=1");
+        db.execSQL("UPDATE STATUS SET VERSION = '"+newVersion+"', IS_DOWNLOADED= '"+isDownloaded+"' WHERE ID=1");
         db.close();
     }
     public void populateDatabase(){
