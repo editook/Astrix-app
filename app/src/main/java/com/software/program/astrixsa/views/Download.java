@@ -110,7 +110,7 @@ public class Download extends Activity {
                 request.setDescription("Astrix: Descargando...");
                 request.allowScanningByMediaScanner();
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                request.setDestinationInExternalFilesDir(Context.DOWNLOAD_SERVICE,"",fileName);
+               // request.setDestinationInExternalFilesDir(Context.DOWNLOAD_SERVICE,"",fileName);
                 //request.setDestinationInExternalFilesDir(this,"", fileName);
 
                 DownloadManager dm = (DownloadManager) activity.getSystemService(Context.DOWNLOAD_SERVICE);
