@@ -27,14 +27,15 @@ public class Database {
     public static void connectDatabase(Context context){
         connection = new ConexionSQLiteHelper(context,Util.DB_NAME,null,1);
         connection.populateDatabase();
+
     }
 
     public static List<CategoryI> getCategories(){
         SQLiteDatabase sqlLectura = connection.getReadableDatabase();
         String [] campos          = {Util.ID_FIELD,Util.NAME_FIELD,Util.IMAGE_URL_FIELD};
         Cursor cursor             = sqlLectura.query("Category",campos,null,null,null,null,null);
-
         List<CategoryI> categoryList = new ArrayList<>();
+        int tamano = cursor.getCount();
         cursor.moveToFirst();
         do{
             int id      = cursor.getInt(0);
@@ -56,7 +57,11 @@ public class Database {
         CategoryI category = new com.software.program.astrixsa.system.app.categorymanager.Category(lavadoYCuidadoRopa,categoria1);
 
         SQLiteDatabase sqlLectura = connection.getReadableDatabase();
-        Cursor cursor = sqlLectura.rawQuery(" SELECT product.id, product.name,product.description FROM category,product WHERE "+id+ "= Category.id",null);
+        Cursor cursor = sqlLectura.rawQuery(" SELECT product.id, product.name,product.description FROM PRODUCT WHERE "+id+ "= product.id_Category",null);
+
+        if(cursor.getCount() == 0){
+            return category;
+        }
         cursor.moveToFirst();
 
         do{
@@ -91,7 +96,10 @@ public class Database {
         List<ElementSC> elementSCs = new ArrayList<>();
 
         SQLiteDatabase sqlLectura = connection.getReadableDatabase();
-        Cursor cursor = sqlLectura.rawQuery(" SELECT item.id, item.position, item.urlYoutube, item.urlVideo, item.image_Url, item.fileName FROM item,product WHERE "+productId+ "= product.id order by item.position",null);
+        Cursor cursor = sqlLectura.rawQuery(" SELECT item.id, item.position, item.urlYoutube, item.urlVideo, item.image_Url, item.fileName FROM item WHERE "+productId+ "= item.id_Product order by item.position",null);
+        if(cursor.getCount() == 0){
+            return elementSCs;
+        }
         cursor.moveToFirst();
         int i = 0;
         int [] arrayIdImages = {R.id.primero,
@@ -230,9 +238,9 @@ public class Database {
 
 
         SQLiteDatabase sqlLectura = connection.getReadableDatabase();
-        Cursor cursor = sqlLectura.rawQuery(" SELECT formatdownload.id, formatdownload.position,formatdownload.formatname ,formatdownload.resolution, formatdownload.urldownload FROM formatdownload,item WHERE "+idItem+ "= item.id order by formatDownload.position asc",null);
+        Cursor cursor = sqlLectura.rawQuery(" SELECT formatdownload.id, formatdownload.position,formatdownload.formatname ,formatdownload.resolution, formatdownload.urldownload FROM formatdownload WHERE "+idItem+ "= formatdownload.id_Item order by formatDownload.position asc",null);
         cursor.moveToFirst();
-        if(cursor.getCount() ==0){
+        if(cursor.getCount() == 0){
             return listFormatSave;
         }
         do{
