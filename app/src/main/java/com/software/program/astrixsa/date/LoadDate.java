@@ -1,6 +1,7 @@
 package com.software.program.astrixsa.date;
 
 import com.software.program.astrixsa.R;
+import com.software.program.astrixsa.database.Database;
 import com.software.program.astrixsa.system.app.categorymanager.Category;
 import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
 import com.software.program.astrixsa.system.app.subcategorymanager.ElementSC;
@@ -13,7 +14,6 @@ import java.io.File;
 
 
 public final class LoadDate {
-
     public static CategoryI getCategory() {
         String lavadoYCuidadoRopa = "LAVADO Y CUIDADO DE LA ROPA";
         Integer categoria1 = R.drawable.categoria;
@@ -129,5 +129,6 @@ public final class LoadDate {
         category.addProduct(product1);
         return category;
     }
+
 
 }

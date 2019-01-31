@@ -1,36 +1,25 @@
 package com.software.program.astrixsa.views;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.MenuItem;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.software.program.astrixsa.R;
 import com.software.program.astrixsa.system.app.AppCategory;
 import com.software.program.astrixsa.system.app.AppCategoryI;
 import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
-import com.software.program.astrixsa.system.app.productmanager.ProductI;
 import com.software.program.astrixsa.system.app.subcategorymanager.ElementSC;
 import com.software.program.astrixsa.system.app.subcategorymanager.SubCategoryI;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.List;
 
 public class MenuVideo extends AppCompatActivity implements View.OnClickListener {

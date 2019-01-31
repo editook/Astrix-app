@@ -3,8 +3,10 @@ package com.software.program.astrixsa;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.software.program.astrixsa.database.ConexionSQLiteHelper;
+import com.software.program.astrixsa.database.Database;
 import com.software.program.astrixsa.views.ViewCategory;
 
 
@@ -15,6 +17,8 @@ public class App extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.init_view);
+        Database.initDatabase(this);
+        //ConexionSQLiteHelper c = new ConexionSQLiteHelper(this,"databaseNew",null,1);
 
         new Handler().postDelayed(new Runnable() {
             @Override

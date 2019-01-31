@@ -2,11 +2,12 @@ package com.software.program.astrixsa.views;
 
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.MediaController;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.software.program.astrixsa.R;
@@ -16,7 +17,8 @@ import java.io.File;
 public class ViewVideoDownloaded extends AppCompatActivity {
     private VideoView videoView;
     private static String FILE ="/storage/emulated/0/Astrix/";
-    private static final String DIRECCION ="storage/emulated/0/Android/data/com.software.program.astrixsa/files/";
+    //private static final String DIRECCION ="storage/emulated/0/Android/data/com.software.program.astrixsa/files/";
+    private static final String DIRECCION =Environment.getExternalStorageDirectory().getPath();
     String filename;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

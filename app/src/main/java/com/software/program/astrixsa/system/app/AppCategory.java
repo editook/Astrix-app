@@ -1,5 +1,6 @@
 package com.software.program.astrixsa.system.app;
 
+import com.software.program.astrixsa.database.Database;
 import com.software.program.astrixsa.date.LoadDate;
 import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
 
@@ -9,8 +10,11 @@ import java.util.List;
 public class AppCategory implements AppCategoryI {
     private List<CategoryI> listCategory;
     public AppCategory(){
-        listCategory = new ArrayList<>();
-        addCategory(LoadDate.getCategory());
+    //    listCategory = new ArrayList<>();
+    //  addCategory(LoadDate.getCategory());
+
+      listCategory = Database.getCategories();
+
     }
     @Override
     public CategoryI getCategory(int index){
