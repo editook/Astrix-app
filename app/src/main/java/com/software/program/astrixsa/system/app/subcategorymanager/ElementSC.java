@@ -9,11 +9,11 @@ import java.util.List;
 
 public class ElementSC {
     private String url;
-    private Integer image;
+    private String image;
     private Enum state;
     private String fileName;
     private ListFormatSave listFormatSave;
-    public ElementSC(String url, Integer image){
+    public ElementSC(String url, String image){
         this.url = url;
         this.image = image;
         state = stateVideo.EN_LINEA;
@@ -30,7 +30,7 @@ public class ElementSC {
     public String getFileName(){
         return fileName;
     }
-    public Integer getImage(){
+    public String getImage(){
         return image;
     }
 

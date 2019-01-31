@@ -2,14 +2,14 @@ package com.software.program.astrixsa.system.app.productmanager;
 
 public abstract class Product implements ProductI {
     private String name,description;
-    private Integer image;
-    public Product(String name, String description, Integer image){
+    private String image;
+    public Product(String name, String description, String image){
         this.name = name;
         this.description = description;
         this.image = image;
     }
     @Override
-    public Integer getImage(){
+    public String getImage(){
         return image;
     }
     @Override

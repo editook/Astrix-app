@@ -22,7 +22,7 @@ public class ViewProduct extends AppCompatActivity {
     /*example of dates*/
     private String[] products;
     private String[] descriptions;
-    private Integer[] images;
+    private String[] images;
     private ListView listView;
     private Button botonSugerencias;
 
@@ -43,7 +43,7 @@ public class ViewProduct extends AppCompatActivity {
         int size = productsList.size();
         products = new String[size];
         descriptions = new String[size];
-        images = new Integer[size];
+        images = new String[size];
         int indexProduct = 0;
         for (SubCategoryI product:productsList){
             Product info = (Product) product;
