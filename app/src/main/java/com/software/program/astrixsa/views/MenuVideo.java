@@ -1,6 +1,9 @@
 package com.software.program.astrixsa.views;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 
@@ -10,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.software.program.astrixsa.R;
@@ -19,7 +23,10 @@ import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
 import com.software.program.astrixsa.system.app.subcategorymanager.ElementSC;
 import com.software.program.astrixsa.system.app.subcategorymanager.SubCategoryI;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.List;
 
 public class MenuVideo extends AppCompatActivity implements View.OnClickListener {
@@ -46,20 +53,52 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
 
     private void updateList(List<ElementSC> elementSCS){
         int indexProduct = 0;
-        for (ElementSC element: elementSCS){
-            createItem(indexProduct,element.getImage());
-            indexProduct++;
-        }
+        ImageView ico0 = findViewById(R.id.primero);
+        createItem(ico0,indexProduct,elementSCS.get(indexProduct).getImage());
+        indexProduct++;
+        ImageView ico2 = findViewById(R.id.segundo);
+        createItem(ico2,indexProduct,elementSCS.get(indexProduct).getImage());
+        indexProduct++;
+        ImageView ico3 = findViewById(R.id.tercero);
+        createItem(ico3,indexProduct,elementSCS.get(indexProduct).getImage());
+        indexProduct++;
+        ImageView ico4 = findViewById(R.id.cuarto);
+        createItem(ico4,indexProduct,elementSCS.get(indexProduct).getImage());
+        indexProduct++;
+        ImageView ico5 = findViewById(R.id.quinto);
+        createItem(ico5,indexProduct,elementSCS.get(indexProduct).getImage());
+        indexProduct++;
+        ImageView ico6 = findViewById(R.id.sexto);
+        createItem(ico6,indexProduct,elementSCS.get(indexProduct).getImage());
+        indexProduct++;
+        ImageView ico7 = findViewById(R.id.septimo);
+        createItem(ico7,indexProduct,elementSCS.get(indexProduct).getImage());
+
     }
-    private void createItem(int index, Integer ide){
+    private void createItem(ImageView icon, int index, String url){
+        if(url == null || url.isEmpty()){
+            icon.setImageResource(R.drawable.white);
+            return;
+        }
         final int indexs = index;
-        ImageView icon = findViewById(ide);
+        /*image refomat*/
+        String nombreFoto = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) +url;
+        Uri output = Uri.fromFile(new File(nombreFoto));
+        InputStream is;
+        try {
+            is = getContentResolver().openInputStream(output);
+            BufferedInputStream bis = new BufferedInputStream(is);
+            Bitmap bitmap = BitmapFactory.decodeStream(bis);
+            icon.setImageBitmap(bitmap);
+        } catch (FileNotFoundException ignored) {}
+        /*image refomat*/
         icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 newWindows(indexs +"");
             }
         });
+
     }
     private void createViews(int indexProduc, int indexCate) {
         AppCategoryI appCategory = new AppCategory();

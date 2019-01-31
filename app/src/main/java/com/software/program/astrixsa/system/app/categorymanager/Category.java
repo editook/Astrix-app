@@ -9,7 +9,7 @@ import java.util.List;
 public class Category extends Product implements CategoryI {
     private List<SubCategoryI> listProducts;
 
-    public Category(String nameCategory, Integer image){
+    public Category(String nameCategory, String image){
         super(nameCategory,"", image);
         listProducts = new ArrayList<>();
     }

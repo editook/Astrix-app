@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SubCategory extends Product implements SubCategoryI {
     private List<ElementSC> elementSCList;
-    public SubCategory(String nameProduct, String description, Integer image){
+    public SubCategory(String nameProduct, String description, String image){
         super(nameProduct,description, image);
         elementSCList = new ArrayList<>();
     }

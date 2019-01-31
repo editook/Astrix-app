@@ -47,27 +47,27 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         }
 
         ArrayList<Category> categories = new ArrayList<>();
-        Category c1 = new Category(Util.CATEGORY1,"");
-        Category c2 = new Category(Util.CATEGORY2,"");
+        Category c1 = new Category(Util.CATEGORY1,"/astrix/image/category1.png");
+        Category c2 = new Category(Util.CATEGORY2,"/astrix/image/category2.png");
         categories.add(c1);
         categories.add(c2);
         insertCategories(categories);
 
         ArrayList<Product> products = new ArrayList<>();
-        Product p1 = new Product(1,Util.PRODUCT1,Util.DESCRIPTION1,"");
-        Product p2 = new Product(1,Util.PRODUCT2,Util.DESCRIPTION2,"");
+        Product p1 = new Product(1,Util.PRODUCT1,Util.DESCRIPTION1,"/astrix/image/p1.png");
+        Product p2 = new Product(1,Util.PRODUCT2,Util.DESCRIPTION2,"/astrix/image/p2.png");
         products.add(p1);
         products.add(p2);
         insertProducts(products);
 
         ArrayList<Item> items = new ArrayList<>();
-        Item i1 = new Item(1,1,Util.url1, "","",Util.fileName1);
-        Item i2 = new Item(1,2,Util.url2, "","",Util.fileName2);
-        Item i3 = new Item(1,3,Util.url3, "","",Util.fileName3);
-        Item i4 = new Item(1,4,Util.url4, "","",Util.fileName4);
-        Item i5 = new Item(1,5,Util.url5, "","",Util.fileName5);
-        Item i6 = new Item(1,6,Util.url6, "","",Util.fileName6);
-        Item i7 = new Item(1,7,Util.url7, "","",Util.fileName7);
+        Item i1 = new Item(1,1,Util.url1, "/astrix/image/i1.png","",Util.fileName1);
+        Item i2 = new Item(1,2,Util.url2, "/astrix/image/i2.jpeg","",Util.fileName2);
+        Item i3 = new Item(1,3,Util.url3, "/astrix/image/i3.png","",Util.fileName3);
+        Item i4 = new Item(1,4,Util.url4, "/astrix/image/i4.jpeg","",Util.fileName4);
+        Item i5 = new Item(1,5,Util.url5, "/astrix/image/i5.jpeg","",Util.fileName5);
+        Item i6 = new Item(1,6,Util.url6, "/astrix/image/i6.png","",Util.fileName6);
+        Item i7 = new Item(1,7,Util.url7, "/astrix/image/i7.png","",Util.fileName7);
         items.add(i1);
         items.add(i2);
         items.add(i3);

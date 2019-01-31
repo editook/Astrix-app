@@ -50,8 +50,8 @@ public class Database {
 
     public static CategoryI getCategory(int id, String name, String URL){
         String lavadoYCuidadoRopa = name;
-        Integer categoria1 = R.drawable.categoria;
-        Integer producto1  = R.drawable.olafuturo;
+        String categoria1 = "/astrix/image/category1.png";
+        String producto1  = "/astrix/image/p1.png";
 
         CategoryI category = new com.software.program.astrixsa.system.app.categorymanager.Category(lavadoYCuidadoRopa,categoria1);
 
@@ -72,7 +72,7 @@ public class Database {
         return category;
     }
 
-    public static SubCategoryI getSubCategoryI(int productId, String productName, String productDescription, int idImage){
+    public static SubCategoryI getSubCategoryI(int productId, String productName, String productDescription, String idImage){
         SubCategoryI subCategoryI = new SubCategory(productName,productDescription, idImage);
         List<ElementSC> productElements = getElements(productId);
         subCategoryI.addElements(productElements);
@@ -94,13 +94,13 @@ public class Database {
         Cursor cursor = sqlLectura.rawQuery(" SELECT item.id, item.position, item.urlYoutube, item.urlVideo, item.image_Url, item.fileName FROM item,product WHERE "+productId+ "= product.id order by item.position",null);
         cursor.moveToFirst();
         int i = 0;
-        int [] arrayIdImages = {R.id.primero,
-                                R.id.segundo,
-                                R.id.tercero,
-                                R.id.cuarto,
-                                R.id.quinto,
-                                R.id.sexto,
-                                R.id.septimo};
+        String [] arrayIdImages = {"/astrix/image/i1.png",
+                                "/astrix/image/i2.jpeg",
+                                "/astrix/image/i3.png",
+                                "/astrix/image/i4.jpeg",
+                                "/astrix/image/i5.jpeg",
+                                "/astrix/image/i6.png",
+                                "/astrix/image/i7.png"};
         do{
             int idItem = cursor.getInt(0);
             int itemPosition  = cursor.getInt(1);
