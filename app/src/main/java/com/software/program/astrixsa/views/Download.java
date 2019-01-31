@@ -31,6 +31,8 @@ public class Download extends Activity {
     private List<FileDownload>listUrlsDownload;
     private ElementSC elementSC;
     private static final String DIRECCION ="storage/emulated/0/Android/data/com.software.program.astrixsa/files/";
+    //private static final String DIRECCION ="storage/emulated/0/Android/data/com.software.program.astrixsa/files/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +110,8 @@ public class Download extends Activity {
                 request.setDescription("Astrix: Descargando...");
                 request.allowScanningByMediaScanner();
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                request.setDestinationInExternalFilesDir(this,"", fileName);
+                request.setDestinationInExternalFilesDir(Context.DOWNLOAD_SERVICE,"",fileName);
+                //request.setDestinationInExternalFilesDir(this,"", fileName);
 
                 DownloadManager dm = (DownloadManager) activity.getSystemService(Context.DOWNLOAD_SERVICE);
                 dm.enqueue(request);

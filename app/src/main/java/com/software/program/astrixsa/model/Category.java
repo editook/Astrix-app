@@ -11,6 +11,10 @@ public class Category {
     public String name;
     public String image;
 
+    public Category(String name, String image){
+        this.name = name;
+        this.image = image;
+    }
     public int getId() {
         return id;
     }
@@ -19,19 +23,19 @@ public class Category {
         this.id = id;
     }
 
-    private String getName(){
+    public String getName(){
         return name;
     }
 
-    private void setName(String name){
+    public void setName(String name){
         this.name = name;
     }
 
-    private String getImage(){
+    public String getImage(){
         return image;
     }
 
-    private void setImage(String image){
+    public void setImage(String image){
         this.image = image;
     }
 }

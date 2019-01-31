@@ -30,22 +30,12 @@ public class ViewCategory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
-
-        connection = new ConexionSQLiteHelper(getApplicationContext(),"basedatos",null,1);
         insertarconsultar();
         listView = findViewById(R.id.listvideos);
         appCategory = new AppCategory();
         createListView();
     }
     public void insertarconsultar(){
-
-        SQLiteDatabase sqlEscritura = connection.getWritableDatabase();
-
-        sqlEscritura.execSQL("insert into Category (name) values ('Joalin')");
-        sqlEscritura.execSQL("insert into Category (name) values ('Manolo')");
-        sqlEscritura.execSQL("insert into Category (name) values ('Eustaquio')");
-        sqlEscritura.close();
-
 
 
     }
@@ -55,24 +45,6 @@ public class ViewCategory extends AppCompatActivity {
         descriptions = new String[size];
         images = new Integer[size];
         int indexCategory = 0;
-        SQLiteDatabase sqlLectura = connection.getReadableDatabase();
-        String [] campos = {"name"};
-        Cursor cursor = sqlLectura.query("Category",campos,null,null,null,null,null);
-        cursor.moveToFirst();
-
-        String myyy = "";
-        do{
-            String actual = cursor.getString(0);
-            myyy+=actual+" ";
-
-        }
-        while(cursor.moveToNext());
-
-
-        Toast.makeText(this,myyy, Toast.LENGTH_LONG).show();
-
-
-        cursor.close();
 
         for (CategoryI category:categories){
             Product info = (Product) category;
