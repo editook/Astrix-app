@@ -27,14 +27,41 @@ public class Database {
     public static void connectDatabase(Context context){
         connection = new ConexionSQLiteHelper(context,Util.DB_NAME,null,1);
         connection.populateDatabase();
+
+    }
+    public static String getCurrentDBVersion(){
+        SQLiteDatabase sqlLectura = connection.getReadableDatabase();
+        Cursor cursor = sqlLectura.rawQuery(" SELECT status.version FROM status WHERE id = 1",null);
+        if(cursor.getCount() == 0){
+            return "0";
+        }
+        cursor.moveToFirst();
+        String versionName = cursor.getString(0);
+        return versionName;
     }
 
+    public static boolean isDownloaded(){
+        SQLiteDatabase sqlLectura = connection.getReadableDatabase();
+        Cursor cursor = sqlLectura.rawQuery(" SELECT status.is_downloaded FROM status WHERE id = 1",null);
+        if(cursor.getCount() == 0){
+            return false;
+        }
+        cursor.moveToFirst();
+        int isDownloaded = cursor.getInt(0);
+        if(isDownloaded == 1){
+            return true;
+        }
+        return false;
+    }
     public static List<CategoryI> getCategories(){
         SQLiteDatabase sqlLectura = connection.getReadableDatabase();
         String [] campos          = {Util.ID_FIELD,Util.NAME_FIELD,Util.IMAGE_URL_FIELD};
         Cursor cursor             = sqlLectura.query("Category",campos,null,null,null,null,null);
-
         List<CategoryI> categoryList = new ArrayList<>();
+        int size = cursor.getCount();
+        if(size == 0){
+            return categoryList;
+        }
         cursor.moveToFirst();
         do{
             int id      = cursor.getInt(0);
@@ -56,7 +83,11 @@ public class Database {
         CategoryI category = new com.software.program.astrixsa.system.app.categorymanager.Category(lavadoYCuidadoRopa,categoria1);
 
         SQLiteDatabase sqlLectura = connection.getReadableDatabase();
-        Cursor cursor = sqlLectura.rawQuery(" SELECT product.id, product.name,product.description FROM category,product WHERE "+id+ "= Category.id",null);
+        Cursor cursor = sqlLectura.rawQuery(" SELECT product.id, product.name,product.description FROM PRODUCT WHERE "+id+ "= product.id_Category",null);
+
+        if(cursor.getCount() == 0){
+            return category;
+        }
         cursor.moveToFirst();
 
         do{
@@ -91,7 +122,10 @@ public class Database {
         List<ElementSC> elementSCs = new ArrayList<>();
 
         SQLiteDatabase sqlLectura = connection.getReadableDatabase();
-        Cursor cursor = sqlLectura.rawQuery(" SELECT item.id, item.position, item.urlYoutube, item.urlVideo, item.image_Url, item.fileName FROM item,product WHERE "+productId+ "= product.id order by item.position",null);
+        Cursor cursor = sqlLectura.rawQuery(" SELECT item.id, item.position, item.urlYoutube, item.urlVideo, item.image_Url, item.fileName FROM item WHERE "+productId+ "= item.id_Product order by item.position",null);
+        if(cursor.getCount() == 0){
+            return elementSCs;
+        }
         cursor.moveToFirst();
         int i = 0;
         String [] arrayIdImages = {"/astrix/image/i1.png",
@@ -230,9 +264,9 @@ public class Database {
 
 
         SQLiteDatabase sqlLectura = connection.getReadableDatabase();
-        Cursor cursor = sqlLectura.rawQuery(" SELECT formatdownload.id, formatdownload.position,formatdownload.formatname ,formatdownload.resolution, formatdownload.urldownload FROM formatdownload,item WHERE "+idItem+ "= item.id order by formatDownload.position asc",null);
+        Cursor cursor = sqlLectura.rawQuery(" SELECT formatdownload.id, formatdownload.position,formatdownload.formatname ,formatdownload.resolution, formatdownload.urldownload FROM formatdownload WHERE "+idItem+ "= formatdownload.id_Item order by formatDownload.position asc",null);
         cursor.moveToFirst();
-        if(cursor.getCount() ==0){
+        if(cursor.getCount() == 0){
             return listFormatSave;
         }
         do{

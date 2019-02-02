@@ -1,12 +1,15 @@
 package com.software.program.astrixsa;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.software.program.astrixsa.database.ConexionSQLiteHelper;
 import com.software.program.astrixsa.database.Database;
+
+import com.software.program.astrixsa.server.Server;
 import com.software.program.astrixsa.views.ViewCategory;
 
 
@@ -18,8 +21,7 @@ public class App extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.init_view);
         Database.initDatabase(this);
-        //ConexionSQLiteHelper c = new ConexionSQLiteHelper(this,"databaseNew",null,1);
-
+        showJSON();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -30,4 +32,9 @@ public class App extends AppCompatActivity {
             }
         }, TIME);
     }
+    public void showJSON(){
+        Server s = new Server(this);
+       s.execute();
+    }
 }
+
