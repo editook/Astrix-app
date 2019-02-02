@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.software.program.astrixsa.database.ConexionSQLiteHelper;
+import com.software.program.astrixsa.database.Database;
 import com.software.program.astrixsa.model.Category;
 import com.software.program.astrixsa.model.FormatDownload;
 import com.software.program.astrixsa.model.Item;
@@ -35,14 +36,14 @@ public class Server  extends AsyncTask<Void,Void,Void> {
     List<Product> products;
     List<Item> items;
     List<FormatDownload> formats;
-    String serverVersion;
+    String localVersion;
     public Server(Activity activity){
         this.activity = activity;
         this.categories = new ArrayList<>();
         this.products = new ArrayList<>();
         this.items = new ArrayList<>();
         this.formats = new ArrayList<>();
-        serverVersion = Util.CURRENT_VERSION;
+        localVersion = Database.getCurrentDBVersion();
     }
     public JSONObject getJSONFromURL(String URL){
         JSONObject jsonObject = null;
@@ -75,17 +76,25 @@ public class Server  extends AsyncTask<Void,Void,Void> {
         try {
 
             JSONObject versionJSON = getJSONFromURL("https://astrixserviceapp.000webhostapp.com/api/version/");
+            if(versionJSON == null){
+                activity.runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(activity, "Hello", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                return null;
+            }
             JSONArray jsonArray = versionJSON.getJSONArray("versions");
             JSONObject currentVersionJSON = (JSONObject) jsonArray.get(0);
             String versionName = currentVersionJSON.get("version").toString();
-            if(!versionName.equals(Util.CURRENT_VERSION)){
+            if(!versionName.equals(localVersion)){
                 JSONObject jsonData = getJSONFromURL("https://astrixserviceapp.000webhostapp.com/api/all/");
 
                 loadCategories(jsonData.getJSONArray("categories"));
                 loadProducts(jsonData.getJSONArray("products"));
                 loadItems(jsonData.getJSONArray("items"));
                 loadFormats(jsonData.getJSONArray("formats"));
-                serverVersion = versionName;
+                localVersion = versionName;
             }
 
 
@@ -167,6 +176,6 @@ public class Server  extends AsyncTask<Void,Void,Void> {
     protected void onPostExecute(Void avoid){
         super.onPostExecute(avoid);
         ConexionSQLiteHelper connection = new ConexionSQLiteHelper(activity.getApplicationContext(),Util.DB_NAME,null,1);
-        connection.updateDatabase(serverVersion,categories,products,items,formats);
+        connection.updateDatabase(localVersion,categories,products,items,formats);
     }
 }

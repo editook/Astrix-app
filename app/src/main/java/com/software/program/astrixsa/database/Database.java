@@ -29,13 +29,39 @@ public class Database {
         connection.populateDatabase();
 
     }
+    public static String getCurrentDBVersion(){
+        SQLiteDatabase sqlLectura = connection.getReadableDatabase();
+        Cursor cursor = sqlLectura.rawQuery(" SELECT status.version FROM status WHERE id = 1",null);
+        if(cursor.getCount() == 0){
+            return "0";
+        }
+        cursor.moveToFirst();
+        String versionName = cursor.getString(0);
+        return versionName;
+    }
 
+    public static boolean isDownloaded(){
+        SQLiteDatabase sqlLectura = connection.getReadableDatabase();
+        Cursor cursor = sqlLectura.rawQuery(" SELECT status.is_downloaded FROM status WHERE id = 1",null);
+        if(cursor.getCount() == 0){
+            return false;
+        }
+        cursor.moveToFirst();
+        int isDownloaded = cursor.getInt(0);
+        if(isDownloaded == 1){
+            return true;
+        }
+        return false;
+    }
     public static List<CategoryI> getCategories(){
         SQLiteDatabase sqlLectura = connection.getReadableDatabase();
         String [] campos          = {Util.ID_FIELD,Util.NAME_FIELD,Util.IMAGE_URL_FIELD};
         Cursor cursor             = sqlLectura.query("Category",campos,null,null,null,null,null);
         List<CategoryI> categoryList = new ArrayList<>();
-        int tamano = cursor.getCount();
+        int size = cursor.getCount();
+        if(size == 0){
+            return categoryList;
+        }
         cursor.moveToFirst();
         do{
             int id      = cursor.getInt(0);

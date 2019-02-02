@@ -2,7 +2,7 @@ package com.software.program.astrixsa.util;
 
 public class Util {
 
-    public static final String DB_NAME = "DATABASEASTRIXAPP6";
+    public static final String DB_NAME = "DATABASEASTRIXAPP2";
     public static final String CURRENT_VERSION = "0";
 
     public static final String STATUS_TABLE = "STATUS";
@@ -43,7 +43,7 @@ public class Util {
     public static final String CREATE_STATUS_TABLE = "CREATE TABLE "+
                                                     ""+STATUS_TABLE+" ("+ID_FIELD+" " +
                                                     "INTEGER PRIMARY KEY, "+VERSION_FIELD+" TEXT,"+IS_DOWNLOADED+" INTEGER)";
-    public static final String INSERT_INITIAL_STATUS = "INSERT INTO STATUS (VERSION_FIELD, IS_DOWNLOADED) VALUES ('"+CURRENT_VERSION+"', 1)";
+    public static final String INSERT_INITIAL_STATUS = "INSERT INTO STATUS (VERSION, IS_DOWNLOADED) VALUES ('"+CURRENT_VERSION+"', 0)";
     public static final String CREATE_CATEGORY_TABLE = "CREATE TABLE " +
                                                         ""+CATEGORY_TABLE+" ("+ID_FIELD+" " +
                                                         "INTEGER PRIMARY KEY, "+NAME_FIELD+" TEXT,"+IMAGE_URL_FIELD+" TEXT)";

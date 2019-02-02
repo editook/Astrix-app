@@ -45,6 +45,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(Util.CREATE_PRODUCT_TABLE);
         db.execSQL(Util.CREATE_ITEM_TABLE);
         db.execSQL(Util.CREATE_FORMATDOWNLOAD_TABLE);
+        db.execSQL(Util.INSERT_INITIAL_STATUS);
         //db.close();
     }
     public void updateDatabase(String newVersion, List<Category> categoryList, List<Product> products, List<Item>items, List<FormatDownload>formats){
