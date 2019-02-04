@@ -7,28 +7,28 @@
     android:background="@android:color/white"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/statusVersion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nesecita Acceso a internet para poder actualizar los productos."
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="@color/black"
-        android:textStyle="italic"
-        android:gravity="center"
-        app:fontFamily="serif" />
+    <!--<TextView-->
+        <!--android:id="@+id/statusVersion"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Nesecita Acceso a internet para poder actualizar los productos."-->
+        <!--android:textAppearance="@style/TextAppearance.AppCompat.Body2"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:textStyle="italic"-->
+        <!--android:gravity="center"-->
+        <!--app:fontFamily="serif" />-->
 
-    <Button
-        android:id="@+id/buttonupdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="35dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="ACTUALIZAR PRODUCTOS"
-        android:textColor="@color/white" />
+    <!--<Button-->
+        <!--android:id="@+id/buttonupdate"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginTop="35dp"-->
+        <!--android:background="@color/colorPrimaryDark"-->
+        <!--android:text="ACTUALIZAR PRODUCTOS"-->
+        <!--android:textColor="@color/white" />-->
 
     <ListView
         android:id="@+id/listvideos"

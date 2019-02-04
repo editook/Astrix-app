@@ -13,6 +13,7 @@ public class ElementSC {
     private Enum state;
     private String fileName;
     private ListFormatSave listFormatSave;
+    private int position;
     public ElementSC(String url, String image){
         this.url = url;
         this.image = image;
@@ -23,6 +24,9 @@ public class ElementSC {
     }
     public void setListFormatSave(ListFormatSave listFormatSave){
         this.listFormatSave = listFormatSave;
+    }
+    public void setPosition(int position){
+        this.position = position;
     }
     public void setFileName(String fileName){
         this.fileName = fileName;

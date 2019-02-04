@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.Toast;
 
 import com.software.program.astrixsa.database.ConexionSQLiteHelper;
@@ -13,6 +14,7 @@ import com.software.program.astrixsa.model.FormatDownload;
 import com.software.program.astrixsa.model.Item;
 import com.software.program.astrixsa.model.Product;
 import com.software.program.astrixsa.util.Util;
+import com.software.program.astrixsa.views.ViewCategory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,13 +33,13 @@ import java.util.List;
 
 public class Server  extends AsyncTask<Void,Void,Void> {
     String data="";
-    Activity activity;
+    ViewCategory activity;
     List<Category> categories;
     List<Product> products;
     List<Item> items;
     List<FormatDownload> formats;
     String localVersion;
-    public Server(Activity activity){
+    public Server(ViewCategory activity){
         this.activity = activity;
         this.categories = new ArrayList<>();
         this.products = new ArrayList<>();
@@ -79,7 +81,7 @@ public class Server  extends AsyncTask<Void,Void,Void> {
             if(versionJSON == null){
                 activity.runOnUiThread(new Runnable() {
                     public void run() {
-                        Toast.makeText(activity, "Hello", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, "Error en la descarga", Toast.LENGTH_SHORT).show();
                     }
                 });
                 return null;
@@ -89,12 +91,38 @@ public class Server  extends AsyncTask<Void,Void,Void> {
             String versionName = currentVersionJSON.get("version").toString();
             if(!versionName.equals(localVersion)){
                 JSONObject jsonData = getJSONFromURL("https://astrixserviceapp.000webhostapp.com/api/all/");
-
                 loadCategories(jsonData.getJSONArray("categories"));
                 loadProducts(jsonData.getJSONArray("products"));
                 loadItems(jsonData.getJSONArray("items"));
                 loadFormats(jsonData.getJSONArray("formats"));
                 localVersion = versionName;
+
+                ConexionSQLiteHelper connection = new ConexionSQLiteHelper(activity.getApplicationContext(),Util.DB_NAME,null,1);
+                connection.updateDatabase(localVersion,categories,products,items,formats);
+
+                activity.runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(activity, "Descargado con exito", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                activity.runOnUiThread(new Runnable() {
+                    public void run() {
+                        activity.resetView();
+                      //  activity.createListView();
+                    }
+                });
+            }else{
+                activity.runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(activity, "La version del sv y local es la misma", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                activity.runOnUiThread(new Runnable() {
+                    public void run() {
+                        activity.make();
+                    }
+                });
+
             }
 
 
@@ -175,7 +203,6 @@ public class Server  extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPostExecute(Void avoid){
         super.onPostExecute(avoid);
-        ConexionSQLiteHelper connection = new ConexionSQLiteHelper(activity.getApplicationContext(),Util.DB_NAME,null,1);
-        connection.updateDatabase(localVersion,categories,products,items,formats);
+
     }
 }

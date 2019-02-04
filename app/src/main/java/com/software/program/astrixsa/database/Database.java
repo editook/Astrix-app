@@ -150,6 +150,7 @@ public class Database {
             ListFormatSave listFormatSave = getListFormatSave(idItem);
             elementSC.setListFormatSave(listFormatSave);
             elementSC.setFileName(fileName);
+            elementSC.setPosition(itemPosition);
             elementSCs.add(elementSC);
             i++;
             //category.addProduct(product);

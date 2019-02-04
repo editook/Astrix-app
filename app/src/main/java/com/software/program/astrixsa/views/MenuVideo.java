@@ -52,9 +52,19 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
     }
 
     private void updateList(List<ElementSC> elementSCS){
-        int indexProduct = 0;
-        ImageView ico0 = findViewById(R.id.primero);
-        createItem(ico0,indexProduct,elementSCS.get(indexProduct).getImage());
+        int [] arrayOfIds = {R.id.primero,
+                            R.id.segundo,
+                            R.id.tercero,
+                            R.id.cuarto,
+                            R.id.quinto,
+                            R.id.sexto,
+                            R.id.septimo};
+        for(int indexProduct = 0; indexProduct< arrayOfIds.length ;  indexProduct++){
+            ImageView icoI = findViewById(arrayOfIds[indexProduct]);
+            createItem(icoI,indexProduct,elementSCS.get(indexProduct).getImage());
+
+        }
+       /* int indexProduct = 0;
         indexProduct++;
         ImageView ico2 = findViewById(R.id.segundo);
         createItem(ico2,indexProduct,elementSCS.get(indexProduct).getImage());
@@ -73,7 +83,7 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
         indexProduct++;
         ImageView ico7 = findViewById(R.id.septimo);
         createItem(ico7,indexProduct,elementSCS.get(indexProduct).getImage());
-
+*/
     }
     private void createItem(ImageView icon, int index, String url){
         if(url == null || url.isEmpty()){

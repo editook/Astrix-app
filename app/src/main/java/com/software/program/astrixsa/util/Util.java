@@ -2,7 +2,7 @@ package com.software.program.astrixsa.util;
 
 public class Util {
 
-    public static final String DB_NAME = "DATABASEASTRIXAPP2";
+    public static final String DB_NAME = "DATABASEASTRIXAPP6";
     public static final String CURRENT_VERSION = "0";
 
     public static final String STATUS_TABLE = "STATUS";
