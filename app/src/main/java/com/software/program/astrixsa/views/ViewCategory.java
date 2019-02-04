@@ -57,13 +57,14 @@ public class ViewCategory extends AppCompatActivity {
         listView        = findViewById(R.id.listvideos);
        // textViewUpdate  = findViewById(R.id.statusVersion);
        // buttonUpdate    = findViewById(R.id.buttonupdate);
+
+        isStoragePermissionGranted();
         askIfConnectedAndUpdate();
        // createListView();
 
         // appCategory     = new AppCategory();
 
         //createButtonUpdate();
-        isStoragePermissionGranted();
         //downloadImages();
         //downloadFile2(this,"https://astrixserviceapp.000webhostapp.com/images/category1.png","category1");
     }

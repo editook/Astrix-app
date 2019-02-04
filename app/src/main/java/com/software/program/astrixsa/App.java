@@ -21,7 +21,6 @@ public class App extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.init_view);
         Database.initDatabase(this);
-        showJSON();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -32,9 +31,7 @@ public class App extends AppCompatActivity {
             }
         }, TIME);
     }
-    public void showJSON(){
-        //Server s = new Server(this);
-       //s.execute();
-    }
+
+
 }
 
