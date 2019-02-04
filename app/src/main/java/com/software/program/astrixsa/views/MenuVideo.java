@@ -59,11 +59,19 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
                             R.id.quinto,
                             R.id.sexto,
                             R.id.septimo};
-        for(int indexProduct = 0; indexProduct< arrayOfIds.length ;  indexProduct++){
-            ImageView icoI = findViewById(arrayOfIds[indexProduct]);
-            createItem(icoI,indexProduct,elementSCS.get(indexProduct).getImage());
+        int indexId = 0;
+        for(int indexElements  = 0; indexElements< elementSCS.size()-1;  indexElements++){
+            if(indexElements == 1 && elementSCS.size() == 6){
+                indexId++;
+            }
+            ImageView icoI1 = findViewById(arrayOfIds[indexId]);
 
+            createItem(icoI1,indexId,elementSCS.get(indexElements).getImage());
+            indexId++;
         }
+        ImageView icoI = findViewById(R.id.septimo);
+        createItem( icoI,indexId,elementSCS.get(elementSCS.size()-1).getImage());
+
        /* int indexProduct = 0;
         indexProduct++;
         ImageView ico2 = findViewById(R.id.segundo);
@@ -92,7 +100,7 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
         }
         final int indexs = index;
         /*image refomat*/
-        String nombreFoto = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) +url;
+        String nombreFoto = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) +"/astrix/"+url;
         Uri output = Uri.fromFile(new File(nombreFoto));
         InputStream is;
         try {

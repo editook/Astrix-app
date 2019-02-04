@@ -1,8 +1,13 @@
 package com.software.program.astrixsa.database;
 
+import android.app.Activity;
+import android.app.DownloadManager;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
+import android.os.Environment;
+import android.widget.Toast;
 
 import com.software.program.astrixsa.R;
 import com.software.program.astrixsa.model.Category;
@@ -77,13 +82,14 @@ public class Database {
 
     public static CategoryI getCategory(int id, String name, String URL){
         String lavadoYCuidadoRopa = name;
-        String categoria1 = "/astrix/image/category1.png";
-        String producto1  = "/astrix/image/p1.png";
+        String categoria1 = "/astrix/images/category1.png";
+        String producto1  = "/astrix/images/p1.png";
 
-        CategoryI category = new com.software.program.astrixsa.system.app.categorymanager.Category(lavadoYCuidadoRopa,categoria1);
+        //CategoryI category = new com.software.program.astrixsa.system.app.categorymanager.Category(lavadoYCuidadoRopa,categoria1);
+        CategoryI category = new com.software.program.astrixsa.system.app.categorymanager.Category(name,URL);
 
         SQLiteDatabase sqlLectura = connection.getReadableDatabase();
-        Cursor cursor = sqlLectura.rawQuery(" SELECT product.id, product.name,product.description FROM PRODUCT WHERE "+id+ "= product.id_Category",null);
+        Cursor cursor = sqlLectura.rawQuery(" SELECT product.id, product.name,product.description, product.image_url FROM PRODUCT WHERE "+id+ "= product.id_Category",null);
 
         if(cursor.getCount() == 0){
             return category;
@@ -94,7 +100,9 @@ public class Database {
             int productId = cursor.getInt(0);
             String productName = cursor.getString(1);
             String description = cursor.getString(2);
-            SubCategoryI product = getSubCategoryI(productId, productName,description,producto1);
+
+            String imageUrl = cursor.getString(3);
+            SubCategoryI product = getSubCategoryI(productId, productName,description,imageUrl);
             category.addProduct(product);
         }
         while(cursor.moveToNext());
@@ -146,7 +154,7 @@ public class Database {
 
             //SubCategoryI product = getSubCategoryI(productId, productName,description,producto1);
 
-            ElementSC elementSC = new ElementSC(urlYoutube,arrayIdImages[i]);
+            ElementSC elementSC = new ElementSC(urlYoutube,urlImage);
             ListFormatSave listFormatSave = getListFormatSave(idItem);
             elementSC.setListFormatSave(listFormatSave);
             elementSC.setFileName(fileName);
@@ -290,5 +298,85 @@ public class Database {
 //        list1.addUrl(format360_1);
 //        list1.addUrl(format720_1);
 //        return listFormatSave;
+    }
+    public static void downloadImages(Activity activity){
+        downloadCategoryImages(activity);
+        downloadProductImages(activity);
+        downloadItemImages(activity);
+    }
+    public static void downloadCategoryImages(Activity activity){
+        SQLiteDatabase sqlLectura = connection.getReadableDatabase();
+        Cursor cursor = sqlLectura.rawQuery(" SELECT category.image_url FROM category ",null);
+
+        if(cursor.getCount() == 0){
+            return;
+        }
+        cursor.moveToFirst();
+
+        do{
+            String image_url = cursor.getString(0);
+            String imageFileName = image_url.split("/")[1];
+            downloadFile(activity,"https://astrixserviceapp.000webhostapp.com/"+image_url,imageFileName);
+        }
+        while(cursor.moveToNext());
+        cursor.close();
+        sqlLectura.close();
+    }
+    public static void downloadProductImages(Activity activity){
+        SQLiteDatabase sqlLectura = connection.getReadableDatabase();
+        Cursor cursor = sqlLectura.rawQuery(" SELECT product.image_url FROM product ",null);
+
+        if(cursor.getCount() == 0){
+            return;
+        }
+        cursor.moveToFirst();
+
+        do{
+            String image_url = cursor.getString(0);
+            String imageFileName = image_url.split("/")[1];
+            String link ="https://astrixserviceapp.000webhostapp.com/"+image_url;
+            downloadFile(activity,link,imageFileName);
+        }
+        while(cursor.moveToNext());
+        cursor.close();
+        sqlLectura.close();
+    }
+    public static void downloadItemImages(Activity activity){
+        SQLiteDatabase sqlLectura = connection.getReadableDatabase();
+        Cursor cursor = sqlLectura.rawQuery(" SELECT item.image_url FROM Item ",null);
+
+        if(cursor.getCount() == 0){
+            return;
+        }
+        cursor.moveToFirst();
+
+        do{
+            String image_url = cursor.getString(0);
+            String imageFileName = image_url.split("/")[1];
+            downloadFile(activity,"https://astrixserviceapp.000webhostapp.com/"+image_url,imageFileName);
+        }
+        while(cursor.moveToNext());
+        cursor.close();
+        sqlLectura.close();
+    }
+    public static void downloadFile(final Activity activity, final String url, final String fileName) {
+        try {
+            if (url != null && !url.isEmpty()) {
+                Uri uri = Uri.parse(url);
+
+                DownloadManager.Request request = new DownloadManager.Request(uri);
+                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+                request.setAllowedOverRoaming(false);
+                request.setTitle("GadgetSaint Downloading " + "Sample" + ".png");
+                request.setDescription("Downloading " + "Sample" + ".png");
+                request.setVisibleInDownloadsUi(true);
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DCIM, "/astrix/images/"  + "/" + fileName);
+///astrix/image/category1.png
+                DownloadManager downloadManager =(DownloadManager) activity.getSystemService(Context.DOWNLOAD_SERVICE);
+                downloadManager.enqueue(request);
+            }
+        } catch (IllegalStateException e) {
+            Toast.makeText(activity, "La version no es compatible con su dispositivo\nfavor enviar comentario", Toast.LENGTH_SHORT).show();
+        }
     }
 }

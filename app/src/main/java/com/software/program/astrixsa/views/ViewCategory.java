@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -32,7 +34,10 @@ import com.software.program.astrixsa.system.app.AppCategory;
 import com.software.program.astrixsa.system.app.AppCategoryI;
 import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
 import com.software.program.astrixsa.system.app.productmanager.Product;
+import com.software.program.astrixsa.system.app.subcategorymanager.SubCategoryI;
+import com.software.program.astrixsa.util.Util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViewCategory extends AppCompatActivity {
@@ -59,7 +64,8 @@ public class ViewCategory extends AppCompatActivity {
 
         //createButtonUpdate();
         isStoragePermissionGranted();
-         downloadFile2(this,"https://astrixserviceapp.000webhostapp.com/images/category1.png","category1");
+        //downloadImages();
+        //downloadFile2(this,"https://astrixserviceapp.000webhostapp.com/images/category1.png","category1");
     }
     private void askIfConnectedAndUpdate(){
         if(isNetDisponible()){
@@ -258,20 +264,23 @@ public class ViewCategory extends AppCompatActivity {
     public void downloadFile2(final Activity activity, final String url, final String fileName) {
         try {
             if (url != null && !url.isEmpty()) {
-                Uri uri  = Uri.parse(url);
+                Uri uri = Uri.parse(url);
+
                 DownloadManager.Request request = new DownloadManager.Request(uri);
                 request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
                 request.setAllowedOverRoaming(false);
                 request.setTitle("GadgetSaint Downloading " + "Sample" + ".png");
                 request.setDescription("Downloading " + "Sample" + ".png");
                 request.setVisibleInDownloadsUi(true);
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "/GadgetSaint/"  + "/" + "Sample" + ".png");
-                DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DCIM, "/astrix/images/"  + "/" + fileName + ".png");
+///astrix/image/category1.png
+                DownloadManager downloadManager =(DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
                 downloadManager.enqueue(request);
             }
         } catch (IllegalStateException e) {
             Toast.makeText(activity, "La version no es compatible con su dispositivo\nfavor enviar comentario", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 }

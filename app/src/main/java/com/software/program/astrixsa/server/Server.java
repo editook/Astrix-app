@@ -2,6 +2,7 @@ package com.software.program.astrixsa.server;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.view.View;
@@ -99,6 +100,7 @@ public class Server  extends AsyncTask<Void,Void,Void> {
 
                 ConexionSQLiteHelper connection = new ConexionSQLiteHelper(activity.getApplicationContext(),Util.DB_NAME,null,1);
                 connection.updateDatabase(localVersion,categories,products,items,formats);
+                Database.downloadImages(activity);
 
                 activity.runOnUiThread(new Runnable() {
                     public void run() {
@@ -139,7 +141,8 @@ public class Server  extends AsyncTask<Void,Void,Void> {
             for (int i = 0; i < jsonObjectCategories.length(); i++) {
                 JSONObject categoryJson = (JSONObject) jsonObjectCategories.get(i);
                 String categoryName = categoryJson.get("name").toString();
-                Category category = new Category(categoryName, "");
+                String categoryImageUrl= categoryJson.get("image_url").toString();
+                Category category = new Category(categoryName, categoryImageUrl);
                 categories.add(category);
             }
         }catch (JSONException e){
@@ -205,4 +208,5 @@ public class Server  extends AsyncTask<Void,Void,Void> {
         super.onPostExecute(avoid);
 
     }
+
 }

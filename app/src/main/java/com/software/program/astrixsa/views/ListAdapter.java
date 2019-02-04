@@ -58,7 +58,7 @@ public class ListAdapter extends ArrayAdapter<String> {
         return view1;
     }
     private Bitmap getBitmap(String url){
-        String nombreFoto = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + url;
+        String nombreFoto = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) +"/astrix/"+url;
         Uri output = Uri.fromFile(new File(nombreFoto));
         InputStream is;
         Bitmap bitmap = null;
@@ -67,7 +67,9 @@ public class ListAdapter extends ArrayAdapter<String> {
             BufferedInputStream bis = new BufferedInputStream(is);
             bitmap = BitmapFactory.decodeStream(bis);
 
-        } catch (FileNotFoundException ignored) {}
+        } catch (FileNotFoundException ignored) {
+            System.out.println("asdasdasd");
+        }
         return bitmap;
     }
     class ViewModel {
