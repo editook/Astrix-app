@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -23,14 +25,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.software.program.astrixsa.App;
 import com.software.program.astrixsa.R;
 import com.software.program.astrixsa.database.ConexionSQLiteHelper;
 import com.software.program.astrixsa.database.Database;
+import com.software.program.astrixsa.server.Server;
 import com.software.program.astrixsa.system.app.AppCategory;
 import com.software.program.astrixsa.system.app.AppCategoryI;
 import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
 import com.software.program.astrixsa.system.app.productmanager.Product;
+import com.software.program.astrixsa.system.app.subcategorymanager.SubCategoryI;
+import com.software.program.astrixsa.util.Util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViewCategory extends AppCompatActivity {
@@ -40,26 +47,77 @@ public class ViewCategory extends AppCompatActivity {
     private ListView listView;
     private AppCategoryI appCategory;
     private ConexionSQLiteHelper connection;
-    private Button buttonUpdate;
-    private TextView textViewUpdate;
+   // private Button buttonUpdate;
+   // private TextView textViewUpdate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
-        listView = findViewById(R.id.listvideos);
-        appCategory = new AppCategory();
-        createListView();
-        createButtonUpdate();
-        downloadFile(this,"https://astrixserviceapp.000webhostapp.com/images/category1.png","category1");
 
+        listView        = findViewById(R.id.listvideos);
+       // textViewUpdate  = findViewById(R.id.statusVersion);
+       // buttonUpdate    = findViewById(R.id.buttonupdate);
+        askIfConnectedAndUpdate();
+       // createListView();
+
+        // appCategory     = new AppCategory();
+
+        //createButtonUpdate();
+        isStoragePermissionGranted();
+        //downloadImages();
+        //downloadFile2(this,"https://astrixserviceapp.000webhostapp.com/images/category1.png","category1");
+    }
+    private void askIfConnectedAndUpdate(){
+        if(isNetDisponible()){
+
+            Toast toast1 =
+                    Toast.makeText(getApplicationContext(),
+                            "Actualizando...", Toast.LENGTH_SHORT);
+            toast1.show();
+            Server s = new Server(this);
+            s.execute();
+
+        }
+        else{
+            if(isOnlineNet()){
+                Toast toast1 =
+                        Toast.makeText(getApplicationContext(),
+                                "No tiene datos suficientes para poder realizar la actualización", Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+            else{
+                Toast toast1 =
+                        Toast.makeText(getApplicationContext(),
+                                "Sin Acceso a internet", Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+            make();
+        }
+
+
+    }
+    public void make(){
+        if(Database.isDownloaded()){
+            appCategory = new AppCategory();
+            createListView();
+        }else{
+            Toast toast1 =
+                    Toast.makeText(getApplicationContext(),
+                            "Sin Acceso a internet joalin", Toast.LENGTH_SHORT);
+            toast1.show();
+        }
+    }
+    public void resetView(){
+        Intent i = new Intent(ViewCategory.this, App.class);
+        startActivity(i);
     }
     private boolean getStatusData(){
         return Database.isDownloaded();
     }
     private void createButtonUpdate(){
 
-        textViewUpdate = findViewById(R.id.statusVersion);
-        buttonUpdate = findViewById(R.id.buttonupdate);
+        //textViewUpdate = findViewById(R.id.statusVersion);
+        //buttonUpdate = findViewById(R.id.buttonupdate);
         SharedPreferences sp = getSharedPreferences("status", 0);
         final SharedPreferences.Editor editor = sp.edit();
         boolean firstRun = sp.getBoolean("first_run",false);
@@ -70,9 +128,9 @@ public class ViewCategory extends AppCompatActivity {
         }
         if(!state){
 
-            textViewUpdate.setVisibility(View.VISIBLE);
-            buttonUpdate.setVisibility(View.VISIBLE);
-            buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            //textViewUpdate.setVisibility(View.VISIBLE);
+           // buttonUpdate.setVisibility(View.VISIBLE);
+           /* buttonUpdate.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
 
                     if(isNetDisponible()){
@@ -99,11 +157,11 @@ public class ViewCategory extends AppCompatActivity {
 
                     }
                 }
-            });
+            });*/
         }
         else{
-            textViewUpdate.setVisibility(View.INVISIBLE);
-            buttonUpdate.setVisibility(View.INVISIBLE);
+            //textViewUpdate.setVisibility(View.INVISIBLE);
+           // buttonUpdate.setVisibility(View.INVISIBLE);
         }
     }
     public Boolean isOnlineNet() {
@@ -149,6 +207,7 @@ public class ViewCategory extends AppCompatActivity {
         }
     }
     private void updateList(List<CategoryI>categories){
+
         int size = categories.size();
         products = new String[size];
         descriptions = new String[size];
@@ -163,10 +222,13 @@ public class ViewCategory extends AppCompatActivity {
             indexCategory++;
         }
     }
-    private void createListView() {
+    public void createListView() {
+        //textViewUpdate.setVisibility(View.GONE);
+        //buttonUpdate.setVisibility(View.GONE);
         final List<CategoryI> categoryIList = appCategory.getListCategories();
         updateList(categoryIList);
         final ListAdapter listAdapter = new ListAdapter(this, images, descriptions, products);
+
         listView.setAdapter(listAdapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -194,4 +256,26 @@ public class ViewCategory extends AppCompatActivity {
             return true;
         }
     }
+    public void downloadFile2(final Activity activity, final String url, final String fileName) {
+        try {
+            if (url != null && !url.isEmpty()) {
+                Uri uri = Uri.parse(url);
+
+                DownloadManager.Request request = new DownloadManager.Request(uri);
+                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+                request.setAllowedOverRoaming(false);
+                request.setTitle("GadgetSaint Downloading " + "Sample" + ".png");
+                request.setDescription("Downloading " + "Sample" + ".png");
+                request.setVisibleInDownloadsUi(true);
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DCIM, "/astrix/images/"  + "/" + fileName + ".png");
+///astrix/image/category1.png
+                DownloadManager downloadManager =(DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                downloadManager.enqueue(request);
+            }
+        } catch (IllegalStateException e) {
+            Toast.makeText(activity, "La version no es compatible con su dispositivo\nfavor enviar comentario", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 }

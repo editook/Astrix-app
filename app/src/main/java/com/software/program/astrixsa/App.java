@@ -33,8 +33,8 @@ public class App extends AppCompatActivity {
         }, TIME);
     }
     public void showJSON(){
-        Server s = new Server(this);
-       s.execute();
+        //Server s = new Server(this);
+       //s.execute();
     }
 }
 

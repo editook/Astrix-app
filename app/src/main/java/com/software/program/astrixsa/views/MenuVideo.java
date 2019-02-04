@@ -52,9 +52,27 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
     }
 
     private void updateList(List<ElementSC> elementSCS){
-        int indexProduct = 0;
-        ImageView ico0 = findViewById(R.id.primero);
-        createItem(ico0,indexProduct,elementSCS.get(indexProduct).getImage());
+        int [] arrayOfIds = {R.id.primero,
+                            R.id.segundo,
+                            R.id.tercero,
+                            R.id.cuarto,
+                            R.id.quinto,
+                            R.id.sexto,
+                            R.id.septimo};
+        int indexId = 0;
+        for(int indexElements  = 0; indexElements< elementSCS.size()-1;  indexElements++){
+            if(indexElements == 1 && elementSCS.size() == 6){
+                indexId++;
+            }
+            ImageView icoI1 = findViewById(arrayOfIds[indexId]);
+
+            createItem(icoI1,indexId,elementSCS.get(indexElements).getImage());
+            indexId++;
+        }
+        ImageView icoI = findViewById(R.id.septimo);
+        createItem( icoI,indexId,elementSCS.get(elementSCS.size()-1).getImage());
+
+       /* int indexProduct = 0;
         indexProduct++;
         ImageView ico2 = findViewById(R.id.segundo);
         createItem(ico2,indexProduct,elementSCS.get(indexProduct).getImage());
@@ -73,7 +91,7 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
         indexProduct++;
         ImageView ico7 = findViewById(R.id.septimo);
         createItem(ico7,indexProduct,elementSCS.get(indexProduct).getImage());
-
+*/
     }
     private void createItem(ImageView icon, int index, String url){
         if(url == null || url.isEmpty()){
@@ -82,7 +100,7 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
         }
         final int indexs = index;
         /*image refomat*/
-        String nombreFoto = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) +url;
+        String nombreFoto = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) +"/astrix/"+url;
         Uri output = Uri.fromFile(new File(nombreFoto));
         InputStream is;
         try {
