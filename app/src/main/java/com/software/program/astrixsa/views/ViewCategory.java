@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.software.program.astrixsa.R;
 import com.software.program.astrixsa.database.ConexionSQLiteHelper;
+import com.software.program.astrixsa.database.Database;
 import com.software.program.astrixsa.system.app.AppCategory;
 import com.software.program.astrixsa.system.app.AppCategoryI;
 import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
@@ -49,12 +50,11 @@ public class ViewCategory extends AppCompatActivity {
         appCategory = new AppCategory();
         createListView();
         createButtonUpdate();
-       // isStoragePermissionGranted();
-       // downloadFile(this,"https://astrixserviceapp.000webhostapp.com/images/category1.png","category1");
+        downloadFile(this,"https://astrixserviceapp.000webhostapp.com/images/category1.png","category1");
 
     }
     private boolean getStatusData(){
-        return false;
+        return Database.isDownloaded();
     }
     private void createButtonUpdate(){
 
@@ -105,18 +105,13 @@ public class ViewCategory extends AppCompatActivity {
             textViewUpdate.setVisibility(View.INVISIBLE);
             buttonUpdate.setVisibility(View.INVISIBLE);
         }
-
-
-
     }
     public Boolean isOnlineNet() {
 
         try {
             Process p = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.es");
-
-            int val           = p.waitFor();
-            boolean reachable = (val == 0);
-            return reachable;
+            int val = p.waitFor();
+            return (val == 0);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -144,7 +139,7 @@ public class ViewCategory extends AppCompatActivity {
 
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                 request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "");
-//                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "/astrix/"  + "/" + "image" + ".png");
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "/astrix/"  + "/" + "image" + ".png");
 
                 DownloadManager dm = (DownloadManager) activity.getSystemService(Context.DOWNLOAD_SERVICE);
                 dm.enqueue(request);
