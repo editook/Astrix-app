@@ -37,24 +37,28 @@ public class ViewVideoYoutube extends AppCompatActivity {
 
         String frameVideo = "<html><body bgcolor='#000000'><center ><iframe width='"+630+"' height='"+343+"' src='"+urlVideo +"' frameborder='0' allowfullscreen></iframe></center ></body></html>";
         displayYoutubeVideo = findViewById(R.id.webview);
-        displayYoutubeVideo.setWebViewClient(new WebViewClient() {
+        webSettings = displayYoutubeVideo.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        webSettings.setAppCacheEnabled(true);
+        webSettings.setPluginState(WebSettings.PluginState.ON);
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        displayYoutubeVideo.loadUrl(urlVideo);
+        /*displayYoutubeVideo.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 return true;
             }
-        });
-        webSettings = displayYoutubeVideo.getSettings();
-        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
-        displayYoutubeVideo.loadData(frameVideo, "text/html", "utf-8");
+        });*/
+
+        //displayYoutubeVideo.loadData(frameVideo, "text/html", "utf-8");
     }
 
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            String frameVideo = "<html><body bgcolor='#000000'><center ><iframe width='"+630+"' height='"+343+"' src='"+urlVideo +"' frameborder='0' allowfullscreen></iframe></center ></body></html>";
+            String frameVideo = "<html><body bgcolor='#000000'><center ><iframe width='"+630+"' height='"+343+"' src='"+"https://wwww.google.com" +"' frameborder='0' allowfullscreen></iframe></center ></body></html>";
             displayYoutubeVideo.loadData(frameVideo,"text/html", "utf-8");
             ViewVideoYoutube.this.finish();
             super.onKeyDown(keyCode, event);
