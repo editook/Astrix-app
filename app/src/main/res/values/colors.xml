@@ -6,9 +6,13 @@
     <color name="colorAccent">#FF4081</color>
     <color name="transparente">#FF4083</color>
     <color name="white">#ffffff</color>
-    <color name="black">#bd4b4b</color>
+    <color name="black">#000000</color>
     <color name="transparentess">#9999</color>
     <color name="pogressBar">#0091ea</color>
     <color name="btnDownload">#A7ACA9</color>
+    <color name="redColor">#ff001e</color>
+    <color name="green">#3cff00</color>
+    <color name="yellow">#eaff00</color>
+    <color name="violet">#ff12fb</color>
 
 </resources>

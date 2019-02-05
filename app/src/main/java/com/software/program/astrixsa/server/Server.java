@@ -104,7 +104,7 @@ public class Server  extends AsyncTask<Void,Void,Void> {
 
                 activity.runOnUiThread(new Runnable() {
                     public void run() {
-                        Toast.makeText(activity, "Descargado con exito", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, "Actualizacion realizada con exito", Toast.LENGTH_LONG).show();
                     }
                 });
                 activity.runOnUiThread(new Runnable() {
@@ -114,11 +114,11 @@ public class Server  extends AsyncTask<Void,Void,Void> {
                     }
                 });
             }else{
-                activity.runOnUiThread(new Runnable() {
+                /*activity.runOnUiThread(new Runnable() {
                     public void run() {
-                        Toast.makeText(activity, "La version del sv y local es la misma", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, "No hay actualizaciones disponibles", Toast.LENGTH_SHORT).show();
                     }
-                });
+                });*/
                 activity.runOnUiThread(new Runnable() {
                     public void run() {
                         activity.make();
@@ -160,7 +160,7 @@ public class Server  extends AsyncTask<Void,Void,Void> {
                 int id_category = productJson.getInt("id_category");
                 String titleProduct  = productJson.get("titleProduct").toString();
 
-                Product product = new Product(id_category,productName,description,imageUrl);
+                Product product = new Product(id_category,productName,description,imageUrl,titleProduct);
                 products.add(product);
             }
         }catch (JSONException e){

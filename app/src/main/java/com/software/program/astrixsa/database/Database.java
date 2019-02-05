@@ -89,7 +89,7 @@ public class Database {
         CategoryI category = new com.software.program.astrixsa.system.app.categorymanager.Category(name,URL);
 
         SQLiteDatabase sqlLectura = connection.getReadableDatabase();
-        Cursor cursor = sqlLectura.rawQuery(" SELECT product.id, product.name,product.description, product.image_url FROM PRODUCT WHERE "+id+ "= product.id_Category",null);
+        Cursor cursor = sqlLectura.rawQuery(" SELECT product.id, product.name,product.description, product.image_url,product.titleproduct FROM PRODUCT WHERE "+id+ "= product.id_Category",null);
 
         if(cursor.getCount() == 0){
             return category;
@@ -100,9 +100,9 @@ public class Database {
             int productId = cursor.getInt(0);
             String productName = cursor.getString(1);
             String description = cursor.getString(2);
-
             String imageUrl = cursor.getString(3);
-            SubCategoryI product = getSubCategoryI(productId, productName,description,imageUrl);
+            String titleProduct = cursor.getString(4);
+            SubCategoryI product = getSubCategoryI(productId, productName,description,imageUrl, titleProduct);
             category.addProduct(product);
         }
         while(cursor.moveToNext());
@@ -111,8 +111,8 @@ public class Database {
         return category;
     }
 
-    public static SubCategoryI getSubCategoryI(int productId, String productName, String productDescription, String idImage){
-        SubCategoryI subCategoryI = new SubCategory(productName,productDescription, idImage);
+    public static SubCategoryI getSubCategoryI(int productId, String productName, String productDescription, String idImage, String productTitle){
+        SubCategoryI subCategoryI = new SubCategory(productName,productDescription, idImage, productTitle);
         List<ElementSC> productElements = getElements(productId);
         subCategoryI.addElements(productElements);
 
@@ -273,7 +273,7 @@ public class Database {
 
 
         SQLiteDatabase sqlLectura = connection.getReadableDatabase();
-        Cursor cursor = sqlLectura.rawQuery(" SELECT formatdownload.id, formatdownload.position,formatdownload.formatname ,formatdownload.resolution, formatdownload.urldownload FROM formatdownload WHERE "+idItem+ "= formatdownload.id_Item order by formatDownload.position asc",null);
+        Cursor cursor = sqlLectura.rawQuery(" SELECT formatdownload.id, formatdownload.position,formatdownload.formatname ,formatdownload.resolution, formatdownload.urldownload FROM formatdownload WHERE "+idItem+ "= formatdownload.id_Item order by formatDownload.position desc",null);
         cursor.moveToFirst();
         if(cursor.getCount() == 0){
             return listFormatSave;

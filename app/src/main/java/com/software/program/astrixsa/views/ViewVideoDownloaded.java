@@ -16,9 +16,8 @@ import java.io.File;
 
 public class ViewVideoDownloaded extends AppCompatActivity {
     private VideoView videoView;
-    private static String FILE ="/storage/emulated/0/Astrix/";
     //private static final String DIRECCION ="storage/emulated/0/Android/data/com.software.program.astrixsa/files/";
-    private static final String DIRECCION =Environment.getExternalStorageDirectory().getPath();
+    private String DIRECCION = Environment.getExternalStorageDirectory().toString()+"/"+Environment.DIRECTORY_DCIM+"/astrix/videos/";
     String filename;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

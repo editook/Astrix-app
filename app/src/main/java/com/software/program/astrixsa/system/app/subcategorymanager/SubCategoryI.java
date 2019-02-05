@@ -8,4 +8,5 @@ public interface SubCategoryI {
     void setURl(String url, int index);
     ElementSC getElement(int index);
     void addElements(List<ElementSC>elementSCS);
+    String getTitleProduct();
 }

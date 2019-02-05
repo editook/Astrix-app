@@ -30,7 +30,7 @@ public class Download extends Activity {
     private int indexCat,indexProd;
     private List<FileDownload>listUrlsDownload;
     private ElementSC elementSC;
-    private static final String DIRECCION ="storage/emulated/0/Android/data/com.software.program.astrixsa/files/";
+    private String DIRECCION ="storage/emulated/0/Android/data/com.software.program.astrixsa/files/";
     //private static final String DIRECCION ="storage/emulated/0/Android/data/com.software.program.astrixsa/files/";
 
     @Override
@@ -71,7 +71,7 @@ public class Download extends Activity {
 
     private void addButtonToMainLayout(final FileDownload fileDownload) {
         String btnText;
-        btnText = fileDownload.getUrlFormat()+ "p";
+        btnText = fileDownload.getUrlFormat();
         Button btn = new Button(this);
         btn.setText(btnText);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -86,8 +86,12 @@ public class Download extends Activity {
         mainLayout.addView(btn);
     }
     private void removeFileSearchName() {
+        DIRECCION = Environment.getExternalStorageDirectory().toString()+"/"+Environment.DIRECTORY_DCIM+"/astrix/videos/";
         String URLS1 = DIRECCION+elementSC.getFileName()+".mp4";
         String URLS2 = DIRECCION+elementSC.getFileName()+".3gp";
+
+//        String URLS1 = DIRECCION+elementSC.getFileName()+".mp4";
+//        String URLS2 = DIRECCION+elementSC.getFileName()+".3gp";
         File dir1 = new File(URLS1);
         File dir2 = new File(URLS2);
         if(dir1.delete()|dir2.delete()){
@@ -104,13 +108,28 @@ public class Download extends Activity {
     public void downloadFile(final Activity activity, final String url, final String fileName) {
         try {
             if (url != null && !url.isEmpty()) {
-                Uri uri = Uri.parse(url);
+
+                Uri uri = Uri.parse("https://astrixserviceapp.000webhostapp.com/"+url);
+
                 DownloadManager.Request request = new DownloadManager.Request(uri);
-                request.setTitle(fileName);
-                request.allowScanningByMediaScanner();
-                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                DownloadManager dm = (DownloadManager) activity.getSystemService(Context.DOWNLOAD_SERVICE);
-                dm.enqueue(request);
+                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+//                request.setAllowedOverRoaming(false);
+//                request.setTitle("Descargando video astrix");
+//                String fileNameWithFormat = fileName.split("/")[1];
+//                request.setDescription("Nombre de archivo: "+fileNameWithFormat);
+               // request.setNotificationVisibility(request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                request.setAllowedOverRoaming(false);
+
+                request.setTitle("Descargando video Astrix");
+                String fileNameWithFormat = fileName.split("videos/")[0];
+                request.setDescription("Nombre de archivo: "+fileNameWithFormat);
+                //request.setDescription("Astrix2");
+                request.setNotificationVisibility(request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                request.setVisibleInDownloadsUi(true);
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DCIM, "/astrix/videos/"  + "/" + fileName);
+
+                DownloadManager downloadManager =(DownloadManager) activity.getSystemService(Context.DOWNLOAD_SERVICE);
+                downloadManager.enqueue(request);
             }
         } catch (IllegalStateException e) {
             Toast.makeText(activity, "La version no es compatible con su dispositivo\nfavor enviar comentario", Toast.LENGTH_SHORT).show();

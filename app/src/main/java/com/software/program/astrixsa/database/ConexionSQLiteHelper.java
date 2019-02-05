@@ -84,8 +84,8 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         insertCategories(categories);
 
         ArrayList<Product> products = new ArrayList<>();
-        Product p1 = new Product(1,Util.PRODUCT1,Util.DESCRIPTION1,"/astrix/image/p1.png");
-        Product p2 = new Product(1,Util.PRODUCT2,Util.DESCRIPTION2,"/astrix/image/p2.png");
+        Product p1 = new Product(1,Util.PRODUCT1,Util.DESCRIPTION1,"/astrix/image/p1.png","");
+        Product p2 = new Product(1,Util.PRODUCT2,Util.DESCRIPTION2,"/astrix/image/p2.png","");
         products.add(p1);
         products.add(p2);
         insertProducts(products);
@@ -156,7 +156,8 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
             String productDescription = p.getDescription();
             String productName = p.getName();
             String productImage = p.getImage();
-            sqlEscritura.execSQL("insert into Product (ID_CATEGORY, NAME, DESCRIPTION ,IMAGE_URL) values ('"+idCategory+"','"+productName+"', '"+productDescription+"','"+productImage+"')");
+            String productTitleProduct = p.getTitleProduct();
+            sqlEscritura.execSQL("insert into Product (ID_CATEGORY, NAME, DESCRIPTION ,IMAGE_URL,TITLEPRODUCT) values ('"+idCategory+"','"+productName+"', '"+productDescription+"','"+productImage+"','"+productTitleProduct+"')");
         }
         sqlEscritura.close();
 

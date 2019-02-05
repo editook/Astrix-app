@@ -56,9 +56,8 @@ public class ViewCategory extends AppCompatActivity {
         listView        = findViewById(R.id.listvideos);
        // textViewUpdate  = findViewById(R.id.statusVersion);
        // buttonUpdate    = findViewById(R.id.buttonupdate);
-
-        isStoragePermissionGranted();
-        askIfConnectedAndUpdate();
+        //make();
+       metodo();
        // createListView();
 
 
@@ -68,16 +67,37 @@ public class ViewCategory extends AppCompatActivity {
         //downloadImages();
         //downloadFile2(this,"https://astrixserviceapp.000webhostapp.com/images/category1.png","category1");
     }
-    private void askIfConnectedAndUpdate(){
-        if(isNetDisponible()){
+    private void metodo(){
+        if(isStoragePermissionGranted()){
+            askIfConnectedAndUpdate();
+        }
+    }
+    public  boolean isStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                askIfConnectedAndUpdate();
+                return true;
+            } else {
 
-            Toast toast1 =
-                    Toast.makeText(getApplicationContext(),
-                            "Actualizando...", Toast.LENGTH_SHORT);
-            toast1.show();
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            return true;
+        }
+    }
+    private void askIfConnectedAndUpdate(){
+        make();
+        if(isNetDisponible()){
+//
+//            Toast toast1 =
+//                    Toast.makeText(getApplicationContext(),
+//                            "Checking for ...", Toast.LENGTH_SHORT);
+//            toast1.show();
             Server s = new Server(this);
             s.execute();
-
         }
         else{
             if(isOnlineNet()){
@@ -92,7 +112,7 @@ public class ViewCategory extends AppCompatActivity {
                                 "Sin Acceso a internet", Toast.LENGTH_SHORT);
                 toast1.show();
             }
-            make();
+
         }
 
 
@@ -104,7 +124,7 @@ public class ViewCategory extends AppCompatActivity {
         }else{
             Toast toast1 =
                     Toast.makeText(getApplicationContext(),
-                            "Sin Acceso a internet joalin", Toast.LENGTH_SHORT);
+                            "No hay archivos que mostrar", Toast.LENGTH_SHORT);
             toast1.show();
         }
     }
@@ -114,6 +134,25 @@ public class ViewCategory extends AppCompatActivity {
     }
     private boolean getStatusData(){
         return false;
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                metodo();
+//           Toast.makeText(getApplicationContext(),
+//                    "Permisos ", Toast.LENGTH_LONG).show();
+//            metodo();
+//            //resume tasks needing this permission
+//        }else{
+//            Toast.makeText(getApplicationContext(),
+//                    "Permisos no garantizados", Toast.LENGTH_SHORT);
+
+        }else{
+            Toast.makeText(getApplicationContext(),
+                    "Tiene que proporcionar permisos a la aplicacion", Toast.LENGTH_LONG).show();
+            metodo();
+        }
     }
     private void createButtonUpdate(){
 
@@ -247,21 +286,7 @@ public class ViewCategory extends AppCompatActivity {
         });
 
     }
-        public  boolean isStoragePermissionGranted() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_GRANTED) {
-                return true;
-            } else {
 
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-                return false;
-            }
-        }
-        else { //permission is automatically granted on sdk<23 upon installation
-            return true;
-        }
-    }
     public void downloadFile2(final Activity activity, final String url, final String fileName) {
         try {
             if (url != null && !url.isEmpty()) {

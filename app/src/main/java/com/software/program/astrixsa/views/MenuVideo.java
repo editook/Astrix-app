@@ -15,12 +15,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.software.program.astrixsa.R;
 import com.software.program.astrixsa.system.app.AppCategory;
 import com.software.program.astrixsa.system.app.AppCategoryI;
+import com.software.program.astrixsa.system.app.categorymanager.Category;
 import com.software.program.astrixsa.system.app.categorymanager.CategoryI;
+import com.software.program.astrixsa.system.app.productmanager.Product;
 import com.software.program.astrixsa.system.app.subcategorymanager.ElementSC;
+import com.software.program.astrixsa.system.app.subcategorymanager.SubCategory;
 import com.software.program.astrixsa.system.app.subcategorymanager.SubCategoryI;
 
 import java.io.BufferedInputStream;
@@ -33,13 +37,15 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
     private SubCategoryI subCategoryI;
     private int indexProd,indexCat;
     private Button botonSugerencias;
-    private static final String DIRECCION ="/Android/data/com.software.program.astrixsa/files/";
+    private  String DIRECCION ="";
+    private TextView description;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vista);
+        description = findViewById(R.id.textView);
         //index list SubCategory
         Bundle parametros = this.getIntent().getExtras();
         String product =  parametros.getString("product");
@@ -122,6 +128,11 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
         AppCategoryI appCategory = new AppCategory();
         CategoryI category = appCategory.getCategory(indexCate);
         subCategoryI = category.getProduct(indexProduc);
+        SubCategory subCategory = (SubCategory) subCategoryI;
+        String name = subCategory.getName();
+        String productDescription = subCategory.getTitleProduct();
+        this.setTitle(name);
+        description.setText(productDescription);
         List<ElementSC> productIList = subCategoryI.getElements();
         updateList(productIList);
     }
@@ -155,10 +166,11 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
 
     private boolean getFileSearchName(int id) {
         ElementSC element = subCategoryI.getElement(id);
+        DIRECCION = Environment.getExternalStorageDirectory().toString()+"/"+Environment.DIRECTORY_DCIM+"/astrix/videos/";
         String URLS1 = DIRECCION+element.getFileName()+".mp4";
         String URLS2 = DIRECCION+element.getFileName()+".3gp";
-        File dir1 = new File(Environment.getExternalStorageDirectory()+URLS1);
-        File dir2 = new File(Environment.getExternalStorageDirectory()+URLS2);
+        File dir1 = new File(URLS1);
+        File dir2 = new File(URLS2);
         return dir1.getAbsoluteFile().isFile()|dir2.getAbsoluteFile().isFile();
     }
 
