@@ -42,7 +42,6 @@ public class SubCategory extends Product implements SubCategoryI {
         }
         return null;
     }
-
     @Override
     public void addElements(List<ElementSC> elements) {
         for(ElementSC elementSC : elements){

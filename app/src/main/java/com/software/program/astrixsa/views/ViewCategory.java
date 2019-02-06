@@ -121,11 +121,6 @@ public class ViewCategory extends AppCompatActivity {
         if(Database.isDownloaded()){
             appCategory = new AppCategory();
             createListView();
-        }else{
-            Toast toast1 =
-                    Toast.makeText(getApplicationContext(),
-                            "No hay archivos que mostrar", Toast.LENGTH_SHORT);
-            toast1.show();
         }
     }
     public void resetView(){

@@ -31,6 +31,7 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 
 public class MenuVideo extends AppCompatActivity implements View.OnClickListener {
@@ -39,6 +40,14 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
     private Button botonSugerencias;
     private  String DIRECCION ="";
     private TextView description;
+    private static HashMap<Integer,Integer>has ;
+    private static int [] arrayOfIds = {R.id.primero,
+            R.id.segundo,
+            R.id.tercero,
+            R.id.cuarto,
+            R.id.quinto,
+            R.id.sexto,
+            R.id.septimo};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -47,6 +56,10 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.vista);
         description = findViewById(R.id.textView);
         //index list SubCategory
+        has = new HashMap<Integer,Integer>();
+        poblarHasMap();
+
+
         Bundle parametros = this.getIntent().getExtras();
         String product =  parametros.getString("product");
         String category =  parametros.getString("category");
@@ -56,55 +69,28 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
         botonSugerencias = findViewById(R.id.botonSugerencias);
         botonSugerencias.setOnClickListener(this);
     }
-
-    private void updateList(List<ElementSC> elementSCS){
-        int [] arrayOfIds = {R.id.primero,
-                            R.id.segundo,
-                            R.id.tercero,
-                            R.id.cuarto,
-                            R.id.quinto,
-                            R.id.sexto,
-                            R.id.septimo};
-        int indexId = 0;
-        for(int indexElements  = 0; indexElements< elementSCS.size()-1;  indexElements++){
-            if(indexElements == 1 && elementSCS.size() == 6){
-                indexId++;
-            }
-            ImageView icoI1 = findViewById(arrayOfIds[indexId]);
-
-            createItem(icoI1,indexId,elementSCS.get(indexElements).getImage());
-            indexId++;
+    private void poblarHasMap(){
+        for(int i =0;i<arrayOfIds.length;i++){
+            has.put(i+1,arrayOfIds[i]);
         }
-        ImageView icoI = findViewById(R.id.septimo);
-        createItem( icoI,indexId,elementSCS.get(elementSCS.size()-1).getImage());
 
-       /* int indexProduct = 0;
-        indexProduct++;
-        ImageView ico2 = findViewById(R.id.segundo);
-        createItem(ico2,indexProduct,elementSCS.get(indexProduct).getImage());
-        indexProduct++;
-        ImageView ico3 = findViewById(R.id.tercero);
-        createItem(ico3,indexProduct,elementSCS.get(indexProduct).getImage());
-        indexProduct++;
-        ImageView ico4 = findViewById(R.id.cuarto);
-        createItem(ico4,indexProduct,elementSCS.get(indexProduct).getImage());
-        indexProduct++;
-        ImageView ico5 = findViewById(R.id.quinto);
-        createItem(ico5,indexProduct,elementSCS.get(indexProduct).getImage());
-        indexProduct++;
-        ImageView ico6 = findViewById(R.id.sexto);
-        createItem(ico6,indexProduct,elementSCS.get(indexProduct).getImage());
-        indexProduct++;
-        ImageView ico7 = findViewById(R.id.septimo);
-        createItem(ico7,indexProduct,elementSCS.get(indexProduct).getImage());
-*/
     }
-    private void createItem(ImageView icon, int index, String url){
+    private void updateList(List<ElementSC> elementSCS){
+
+
+        for(int indexElements  = 0; indexElements< elementSCS.size();  indexElements++){
+            ImageView icoI1 = findViewById(has.get(elementSCS.get(indexElements).getPosition()));
+            createItem(icoI1,elementSCS.get(indexElements),elementSCS.get(indexElements).getImage());
+
+        }
+
+    }
+    private void createItem(ImageView icon, ElementSC element, String url){
         if(url == null || url.isEmpty()){
             icon.setImageResource(R.drawable.white);
             return;
         }
-        final int indexs = index;
+        final ElementSC indexs = element;
         /*image refomat*/
         String nombreFoto = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) +"/astrix/"+url;
         Uri output = Uri.fromFile(new File(nombreFoto));
@@ -114,14 +100,14 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
             BufferedInputStream bis = new BufferedInputStream(is);
             Bitmap bitmap = BitmapFactory.decodeStream(bis);
             icon.setImageBitmap(bitmap);
+            icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    newWindows(indexs);
+                }
+            });
         } catch (FileNotFoundException ignored) {}
         /*image refomat*/
-        icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                newWindows(indexs +"");
-            }
-        });
 
     }
     private void createViews(int indexProduc, int indexCate) {
@@ -137,13 +123,13 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
         updateList(productIList);
     }
 
-    private void newWindows(final String idVideo) {
+    private void newWindows(final ElementSC element) {
         AlertDialog.Builder alert = new AlertDialog.Builder(MenuVideo.this);
         View view = getLayoutInflater().inflate(R.layout.dialog_option_replay,null);
         Button button = view.findViewById(R.id.playvideo);
         String name = button.getText().toString();
-        final ElementSC elementSC = subCategoryI.getElement(Integer.parseInt(idVideo));
-        elementSC.setState(getFileSearchName(Integer.parseInt(idVideo)));
+        final ElementSC elementSC = element;
+        elementSC.setState(getFileSearchName(elementSC));
         button.setText(name+ elementSC.state());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,7 +141,7 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                downloadVideo(elementSC,idVideo);
+                downloadVideo(elementSC,elementSC);
             }
 
         });
@@ -164,17 +150,16 @@ public class MenuVideo extends AppCompatActivity implements View.OnClickListener
         alertDialog.show();
     }
 
-    private boolean getFileSearchName(int id) {
-        ElementSC element = subCategoryI.getElement(id);
+    private boolean getFileSearchName(ElementSC fileName) {
         DIRECCION = Environment.getExternalStorageDirectory().toString()+"/"+Environment.DIRECTORY_DCIM+"/astrix/videos/";
-        String URLS1 = DIRECCION+element.getFileName()+".mp4";
-        String URLS2 = DIRECCION+element.getFileName()+".3gp";
+        String URLS1 = DIRECCION+fileName.getFileName()+".mp4";
+        String URLS2 = DIRECCION+fileName.getFileName()+".3gp";
         File dir1 = new File(URLS1);
         File dir2 = new File(URLS2);
         return dir1.getAbsoluteFile().isFile()|dir2.getAbsoluteFile().isFile();
     }
 
-    private void downloadVideo(ElementSC elementSC, String idVideo) {
+    private void downloadVideo(ElementSC elementSC, ElementSC element) {
 
         Intent actividad = new Intent(MenuVideo.this, Download.class);
         actividad.putExtra("video", elementSC.getFileName());

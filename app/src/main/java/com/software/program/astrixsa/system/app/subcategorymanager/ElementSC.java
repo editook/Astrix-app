@@ -28,6 +28,10 @@ public class ElementSC {
     public void setPosition(int position){
         this.position = position;
     }
+
+    public int getPosition(){
+        return position;
+    }
     public void setFileName(String fileName){
         this.fileName = fileName;
     }

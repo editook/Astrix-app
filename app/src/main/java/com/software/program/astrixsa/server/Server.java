@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -90,7 +92,19 @@ public class Server  extends AsyncTask<Void,Void,Void> {
             JSONArray jsonArray = versionJSON.getJSONArray("versions");
             JSONObject currentVersionJSON = (JSONObject) jsonArray.get(0);
             String versionName = currentVersionJSON.get("version").toString();
+            boolean res = false;
             if(!versionName.equals(localVersion)){
+                String direccion = Environment.getExternalStorageDirectory().toString()+"/"+Environment.DIRECTORY_DCIM+"/astrix/images/";
+                File dir = new File(direccion);
+
+                if(dir.isDirectory()){
+                    String[] children = dir.list();
+                    for (int i = 0; i < children.length; i++)
+                    {
+                        new File(dir, children[i]).delete();
+                    }
+                }
+
                 JSONObject jsonData = getJSONFromURL("https://astrixserviceapp.000webhostapp.com/api/all/");
                 loadCategories(jsonData.getJSONArray("categories"));
                 loadProducts(jsonData.getJSONArray("products"));
