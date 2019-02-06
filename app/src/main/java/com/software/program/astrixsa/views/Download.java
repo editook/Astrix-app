@@ -113,17 +113,11 @@ public class Download extends Activity {
 
                 DownloadManager.Request request = new DownloadManager.Request(uri);
                 request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
-//                request.setAllowedOverRoaming(false);
-//                request.setTitle("Descargando video astrix");
-//                String fileNameWithFormat = fileName.split("/")[1];
-//                request.setDescription("Nombre de archivo: "+fileNameWithFormat);
-               // request.setNotificationVisibility(request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                 request.setAllowedOverRoaming(false);
 
                 request.setTitle("Descargando video Astrix");
                 String fileNameWithFormat = fileName.split("videos/")[0];
                 request.setDescription("Nombre de archivo: "+fileNameWithFormat);
-                //request.setDescription("Astrix2");
                 request.setNotificationVisibility(request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                 request.setVisibleInDownloadsUi(true);
                 request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DCIM, "/astrix/videos/"  + "/" + fileName);

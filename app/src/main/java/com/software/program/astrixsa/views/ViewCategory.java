@@ -46,26 +46,12 @@ public class ViewCategory extends AppCompatActivity {
     private String[] images;
     private ListView listView;
     private AppCategoryI appCategory;
-    private ConexionSQLiteHelper connection;
-   // private Button buttonUpdate;
-   // private TextView textViewUpdate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
         listView        = findViewById(R.id.listvideos);
-       // textViewUpdate  = findViewById(R.id.statusVersion);
-       // buttonUpdate    = findViewById(R.id.buttonupdate);
-        //make();
        metodo();
-       // createListView();
-
-
-        // appCategory     = new AppCategory();
-
-        //createButtonUpdate();
-        //downloadImages();
-        //downloadFile2(this,"https://astrixserviceapp.000webhostapp.com/images/category1.png","category1");
     }
     private void metodo(){
         if(isStoragePermissionGranted()){
@@ -91,11 +77,6 @@ public class ViewCategory extends AppCompatActivity {
     private void askIfConnectedAndUpdate(){
         make();
         if(isNetDisponible()){
-//
-//            Toast toast1 =
-//                    Toast.makeText(getApplicationContext(),
-//                            "Checking for ...", Toast.LENGTH_SHORT);
-//            toast1.show();
             Server s = new Server(this);
             s.execute();
         }
@@ -135,13 +116,6 @@ public class ViewCategory extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
                 metodo();
-//           Toast.makeText(getApplicationContext(),
-//                    "Permisos ", Toast.LENGTH_LONG).show();
-//            metodo();
-//            //resume tasks needing this permission
-//        }else{
-//            Toast.makeText(getApplicationContext(),
-//                    "Permisos no garantizados", Toast.LENGTH_SHORT);
 
         }else{
             Toast.makeText(getApplicationContext(),
@@ -149,59 +123,7 @@ public class ViewCategory extends AppCompatActivity {
             metodo();
         }
     }
-    private void createButtonUpdate(){
 
-        //textViewUpdate = findViewById(R.id.statusVersion);
-        //buttonUpdate = findViewById(R.id.buttonupdate);
-        SharedPreferences sp = getSharedPreferences("status", 0);
-        final SharedPreferences.Editor editor = sp.edit();
-        boolean firstRun = sp.getBoolean("first_run",false);
-        boolean state = false;
-        if (!firstRun) {
-            state = getStatusData();
-            editor.putBoolean("first_run",state).apply();
-        }
-        if(!state){
-
-            //textViewUpdate.setVisibility(View.VISIBLE);
-           // buttonUpdate.setVisibility(View.VISIBLE);
-           /* buttonUpdate.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-
-                    if(isNetDisponible()){
-                        editor.putBoolean("first_run",true).apply();
-                        Toast toast1 =
-                                Toast.makeText(getApplicationContext(),
-                                        "Actualinzando...", Toast.LENGTH_SHORT);
-                        toast1.show();
-
-                    }
-                    else{
-                        if(isOnlineNet()){
-                            Toast toast1 =
-                                    Toast.makeText(getApplicationContext(),
-                                            "No tiene datos suficientes para poder realizar la actualización", Toast.LENGTH_SHORT);
-                            toast1.show();
-                        }
-                        else{
-                            Toast toast1 =
-                                    Toast.makeText(getApplicationContext(),
-                                            "Sin Acceso a internet", Toast.LENGTH_SHORT);
-                            toast1.show();
-                        }
-
-                    }
-                }
-            });*/
-        }
-        else{
-            //textViewUpdate.setVisibility(View.INVISIBLE);
-           // buttonUpdate.setVisibility(View.INVISIBLE);
-        }
-
-
-
-    }
     public Boolean isOnlineNet() {
 
         try {
@@ -225,27 +147,7 @@ public class ViewCategory extends AppCompatActivity {
 
         return (actNetInfo != null && actNetInfo.isConnected());
     }
-    public void downloadFile(final Activity activity, final String urls, final String fileName) {
-        try {
-            if (urls != null && !urls.isEmpty()) {
-                Uri Download_Uri = Uri.parse(urls);
 
-                DownloadManager.Request request = new DownloadManager.Request(Download_Uri);
-                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
-                request.setAllowedOverRoaming(false);
-                request.setVisibleInDownloadsUi(true);
-
-                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "");
-//                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "/astrix/"  + "/" + "image" + ".png");
-
-                DownloadManager dm = (DownloadManager) activity.getSystemService(Context.DOWNLOAD_SERVICE);
-                dm.enqueue(request);
-            }
-        } catch (IllegalStateException e) {
-
-        }
-    }
     private void updateList(List<CategoryI>categories){
 
         int size = categories.size();
@@ -263,8 +165,6 @@ public class ViewCategory extends AppCompatActivity {
         }
     }
     public void createListView() {
-        //textViewUpdate.setVisibility(View.GONE);
-        //buttonUpdate.setVisibility(View.GONE);
         final List<CategoryI> categoryIList = appCategory.getListCategories();
         updateList(categoryIList);
         final ListAdapter listAdapter = new ListAdapter(this, images, descriptions, products);
@@ -294,7 +194,6 @@ public class ViewCategory extends AppCompatActivity {
                 request.setDescription("Downloading " + "Sample" + ".png");
                 request.setVisibleInDownloadsUi(true);
                 request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DCIM, "/astrix/images/"  + "/" + fileName + ".png");
-///astrix/image/category1.png
                 DownloadManager downloadManager =(DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
                 downloadManager.enqueue(request);
             }
